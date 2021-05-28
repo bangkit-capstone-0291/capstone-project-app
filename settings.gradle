@@ -1,0 +1,2 @@
+rootProject.name = "Qualityum App"
+include ':app'
