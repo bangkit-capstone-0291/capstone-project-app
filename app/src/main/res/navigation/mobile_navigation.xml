@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.bangkit.electrateam.qualityumapp.ui.dashboard.DashboardFragment"
+        android:name="com.bangkit.electrateam.qualityumapp.ui.stock.StockFragment"
         android:label="@string/title_stock"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_stock" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.bangkit.electrateam.qualityumapp.ui.notifications.NotificationsFragment"
+        android:name="com.bangkit.electrateam.qualityumapp.ui.favorite.FavoriteFragment"
         android:label="@string/title_camera"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

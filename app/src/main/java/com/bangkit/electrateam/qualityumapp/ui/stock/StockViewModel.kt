@@ -1,10 +1,10 @@
-package com.bangkit.electrateam.qualityumapp.ui.dashboard
+package com.bangkit.electrateam.qualityumapp.ui.stock
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class StockViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
