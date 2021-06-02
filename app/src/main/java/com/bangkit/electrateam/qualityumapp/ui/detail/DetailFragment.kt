@@ -66,10 +66,9 @@ class DetailFragment : Fragment() {
     }
 
     private fun setFavouriteState(state: Boolean) {
-        if (state) {
-            binding.btnFavStock.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
-        } else {
-            binding.btnFavStock.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
+        when (state) {
+            true -> binding.btnFavStock.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
+            false -> binding.btnFavStock.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
         }
     }
 

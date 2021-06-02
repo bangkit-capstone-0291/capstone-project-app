@@ -19,7 +19,6 @@ object DataDummy {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis at urna nec dictum. Aliquam fringilla venenatis leo, sit amet semper nibh maximus ut. Donec a eleifend libero. Suspendisse lectus nulla, scelerisque in neque sit",
                 "Good Fruit",
                 "06 June, 2021",
-                false
             )
         )
 
@@ -33,7 +32,6 @@ object DataDummy {
                 "nothing",
                 "Bad Fruit",
                 "04 June, 2021",
-                false
             )
         )
 
@@ -47,7 +45,6 @@ object DataDummy {
                 "nothing",
                 "Good Fruit",
                 "08 June, 2021",
-                false
             )
         )
 
@@ -61,7 +58,6 @@ object DataDummy {
                 "nothing",
                 "Good Fruit",
                 "09 June, 2021",
-                false
             )
         )
 
@@ -74,7 +70,6 @@ object DataDummy {
                 "nothing",
                 " ",
                 " ",
-                false
             )
         )
 
@@ -88,7 +83,6 @@ object DataDummy {
                 "nothing",
                 " ",
                 "31 December, 2021",
-                false
             )
         )
 
@@ -102,7 +96,6 @@ object DataDummy {
                 "nothing",
                 "Good Fruit",
                 "10 June, 2021",
-                false
             )
         )
 
