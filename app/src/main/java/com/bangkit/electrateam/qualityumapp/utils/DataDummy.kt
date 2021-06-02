@@ -16,8 +16,9 @@ object DataDummy {
                 "Apple",
                 "Fruits",
                 20,
-                "nothing",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis at urna nec dictum. Aliquam fringilla venenatis leo, sit amet semper nibh maximus ut. Donec a eleifend libero. Suspendisse lectus nulla, scelerisque in neque sit",
                 "Good Fruit",
+                "06 June, 2021",
                 false
             )
         )
@@ -31,6 +32,7 @@ object DataDummy {
                 47,
                 "nothing",
                 "Bad Fruit",
+                "04 June, 2021",
                 false
             )
         )
@@ -44,6 +46,7 @@ object DataDummy {
                 108,
                 "nothing",
                 "Good Fruit",
+                "08 June, 2021",
                 false
             )
         )
@@ -57,17 +60,19 @@ object DataDummy {
                 31,
                 "nothing",
                 "Good Fruit",
+                "09 June, 2021",
                 false
             )
         )
 
         data.add(
             StockData(
-                5,R.drawable.broccoli,
+                5, R.drawable.broccoli,
                 "Broccoli",
                 "Vegetables",
                 5,
                 "nothing",
+                " ",
                 " ",
                 false
             )
@@ -82,6 +87,7 @@ object DataDummy {
                 80,
                 "nothing",
                 " ",
+                "31 December, 2021",
                 false
             )
         )
@@ -95,6 +101,7 @@ object DataDummy {
                 33,
                 "nothing",
                 "Good Fruit",
+                "10 June, 2021",
                 false
             )
         )

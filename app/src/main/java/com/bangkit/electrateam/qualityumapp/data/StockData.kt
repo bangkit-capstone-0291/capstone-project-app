@@ -10,7 +10,8 @@ data class StockData(
     var name: String,
     var category: String,
     var quantity: Int,
-    var description: String,
+    var description: String?,
     var quality: String,
+    var expDate: String?,
     var isFavorite: Boolean = false
 ) : Parcelable

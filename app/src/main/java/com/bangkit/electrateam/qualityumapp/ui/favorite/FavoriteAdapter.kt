@@ -44,7 +44,7 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>
         fun bind(itemStock: StockData) {
             with(binding) {
                 tvName.text = itemStock.name
-                tvExpDate.text = R.string.date_example.toString()
+                tvExpDate.text = itemStock.expDate
                 tvTotalItem.text = itemStock.quantity.toString()
                 tvCategory.text = itemStock.category
 

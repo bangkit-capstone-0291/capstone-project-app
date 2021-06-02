@@ -39,7 +39,7 @@ class DetailFragment : Fragment() {
             tvCategoryValue.text = data.category
             tvQualityValue.text = data.quality
             tvQuantityValue.text = data.quantity.toString()
-            tvExpValue.text = "Not yet implemented"
+            tvExpValue.text = data.expDate
             tvDescriptionValue.text = data.description
             Glide.with(this@DetailFragment)
                 .load(data.image)
