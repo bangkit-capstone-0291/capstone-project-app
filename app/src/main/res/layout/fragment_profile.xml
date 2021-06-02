@@ -1,13 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/user"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/tv_profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="@string/electra_team"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_profile_email"
+        app:layout_constraintStart_toEndOf="@id/img_profile"
+        app:layout_constraintTop_toTopOf="@id/img_profile" />
+
+    <TextView
+        android:id="@+id/tv_profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/electra_email"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_profile_phone"
+        app:layout_constraintStart_toStartOf="@id/tv_profile_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile_name" />
+
+    <TextView
+        android:id="@+id/tv_profile_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/electra_phone"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/img_profile"
+        app:layout_constraintStart_toStartOf="@id/tv_profile_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile_email" />
+
+    <View
+        android:id="@+id/divider_setting"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile" />
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/divider_color"
+        app:layout_constraintTop_toBottomOf="@id/img_profile" />
+
+    <TextView
+        android:id="@+id/tv_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/settings"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_setting" />
+
+    <TextView
+        android:id="@+id/tv_personal_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/personal_information"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_setting"
+        app:layout_constraintTop_toBottomOf="@id/tv_setting" />
+
+    <ImageView
+        android:id="@+id/img_personal_information"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintBottom_toBottomOf="@id/tv_personal_information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_personal_information"
+        app:tint="@color/black"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/divider_language"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/divider_color"
+        app:layout_constraintEnd_toEndOf="@id/img_personal_information"
+        app:layout_constraintStart_toStartOf="@id/tv_personal_information"
+        app:layout_constraintTop_toBottomOf="@id/tv_personal_information" />
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/language"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_setting"
+        app:layout_constraintTop_toBottomOf="@id/divider_language" />
+
+    <ImageView
+        android:id="@+id/img_language"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_baseline_translate_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_language"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_language"
+        app:tint="@color/black"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/divider_about"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/divider_color"
+        app:layout_constraintEnd_toEndOf="@id/img_language"
+        app:layout_constraintStart_toStartOf="@id/tv_language"
+        app:layout_constraintTop_toBottomOf="@id/tv_language" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/about"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_about" />
+
+    <TextView
+        android:id="@+id/tv_about_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/about_us"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_about"
+        app:layout_constraintTop_toBottomOf="@id/tv_about" />
+
+    <ImageView
+        android:id="@+id/img_about_us"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_info_icon"
+        app:layout_constraintBottom_toBottomOf="@id/tv_about_us"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_about_us"
+        app:tint="@color/black"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/divider_logout"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/divider_color"
+        app:layout_constraintEnd_toEndOf="@id/img_about_us"
+        app:layout_constraintStart_toStartOf="@id/tv_about_us"
+        app:layout_constraintTop_toBottomOf="@id/tv_about_us" />
+
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/logout"
+        android:textColor="@color/red_ikm"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_about"
+        app:layout_constraintTop_toBottomOf="@id/divider_logout" />
+
+    <ImageView
+        android:id="@+id/img_logout"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_logout_icon"
+        app:layout_constraintBottom_toBottomOf="@id/tv_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_logout"
+        app:tint="@color/red_ikm"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

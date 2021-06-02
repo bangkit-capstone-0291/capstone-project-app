@@ -12,4 +12,13 @@
     <string name="category">Category</string>
     <string name="about_ikm">About IKM</string>
     <string name="txt_empty">Oops! There’s no stock</string>
+    <string name="electra_team">Electra Team</string>
+    <string name="electra_email">electra.team@bangkit.com</string>
+    <string name="electra_phone">+62 812 5678 2345</string>
+    <string name="settings">SETTINGS</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="language">Language</string>
+    <string name="about">ABOUT</string>
+    <string name="about_us">About Us</string>
+    <string name="logout">Logout</string>
 </resources>
