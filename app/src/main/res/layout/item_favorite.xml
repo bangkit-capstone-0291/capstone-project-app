@@ -2,8 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cv_item_stock"
-    android:layout_width="wrap_content"
+    android:id="@+id/cv_item_favorite"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
@@ -18,21 +18,22 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/img_item"
-            android:layout_width="165dp"
-            android:layout_height="150dp"
-            android:src="@color/fruit_card"
+            android:id="@+id/img_item_fav"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@color/primary"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_title_item"
+            android:id="@+id/tv_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="2"
@@ -40,20 +41,40 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_item"
-            tools:text="Item Example" />
+            app:layout_constraintStart_toEndOf="@id/img_item_fav"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/fruit_example" />
+
+        <TextView
+            android:id="@+id/tv_exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/best_before"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/ic_item"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_exp_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/red_ikm"
+            app:layout_constraintBottom_toBottomOf="@id/tv_exp"
+            app:layout_constraintStart_toEndOf="@id/tv_exp"
+            app:layout_constraintTop_toTopOf="@id/tv_exp"
+            tools:text="@string/date_example" />
 
         <ImageView
             android:id="@+id/ic_item"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
             android:src="@drawable/ic_item_stock_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_title_item"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_item"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_exp"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -66,7 +87,7 @@
             app:layout_constraintBottom_toBottomOf="@id/ic_item"
             app:layout_constraintStart_toEndOf="@id/ic_item"
             app:layout_constraintTop_toTopOf="@id/ic_item"
-            tools:text="12" />
+            tools:text="21" />
 
         <TextView
             android:id="@+id/tv_category"
@@ -79,6 +100,5 @@
             app:layout_constraintStart_toEndOf="@id/tv_total_item"
             app:layout_constraintTop_toTopOf="@id/ic_item"
             tools:text="@string/fruits" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

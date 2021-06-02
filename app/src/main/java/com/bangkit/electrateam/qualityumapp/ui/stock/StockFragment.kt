@@ -42,16 +42,13 @@ class StockFragment : Fragment() {
             stockAdapter = StockAdapter()
             setData(dataStock)
             onStockSelected()
-
-            /*stockViewModel.text.observe(viewLifecycleOwner, {
-            })*/
         }
     }
 
     private fun setData(data: List<StockData>) {
         showLoading(false)
         showEmpty(false)
-        stockAdapter.setDataMovies(data as ArrayList<StockData>)
+        stockAdapter.setDataStock(data as ArrayList<StockData>)
         with(binding.rvStock) {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
             setHasFixedSize(true)

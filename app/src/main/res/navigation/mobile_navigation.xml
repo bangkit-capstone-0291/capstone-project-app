@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.bangkit.electrateam.qualityumapp.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <deepLink
+            android:id="@+id/deepLink_esmartikm"
+            app:uri="http://esmartikm.id/" />
+        <deepLink
+            android:id="@+id/deepLink_smartsentra"
+            app:uri="https://smartsentra.kemenperin.go.id/" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_stock"

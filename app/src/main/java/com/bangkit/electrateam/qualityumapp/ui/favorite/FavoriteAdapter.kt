@@ -1,22 +1,22 @@
-package com.bangkit.electrateam.qualityumapp.ui.stock
+package com.bangkit.electrateam.qualityumapp.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.data.StockData
-import com.bangkit.electrateam.qualityumapp.databinding.ItemStockBinding
+import com.bangkit.electrateam.qualityumapp.databinding.ItemFavoriteBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
-class StockAdapter : RecyclerView.Adapter<StockAdapter.StockViewHolder>() {
+class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
     private lateinit var onItemClickListener: OnItemClickListener
-    private var listMaterialStock = ArrayList<StockData>()
+    private var listFavStock = ArrayList<StockData>()
 
-    fun setDataStock(stock: ArrayList<StockData>) {
-        this.listMaterialStock.clear()
-        this.listMaterialStock.addAll(stock)
+    fun setDataFav(favorite: ArrayList<StockData>) {
+        this.listFavStock.clear()
+        this.listFavStock.addAll(favorite)
         notifyDataSetChanged()
     }
 
@@ -27,22 +27,24 @@ class StockAdapter : RecyclerView.Adapter<StockAdapter.StockViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): StockAdapter.StockViewHolder {
-        val binding = ItemStockBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return StockViewHolder(binding)
+    ): FavoriteAdapter.FavoriteViewHolder {
+        val binding =
+            ItemFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FavoriteViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: StockAdapter.StockViewHolder, position: Int) {
-        holder.bind(listMaterialStock[position])
+    override fun onBindViewHolder(holder: FavoriteAdapter.FavoriteViewHolder, position: Int) {
+        holder.bind(listFavStock[position])
     }
 
-    override fun getItemCount(): Int = listMaterialStock.size
+    override fun getItemCount(): Int = listFavStock.size
 
-    inner class StockViewHolder(private val binding: ItemStockBinding) :
+    inner class FavoriteViewHolder(private val binding: ItemFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(itemStock: StockData) {
             with(binding) {
-                tvTitleItem.text = itemStock.name
+                tvName.text = itemStock.name
+                tvExpDate.text = R.string.date_example.toString()
                 tvTotalItem.text = itemStock.quantity.toString()
                 tvCategory.text = itemStock.category
 
@@ -51,7 +53,7 @@ class StockAdapter : RecyclerView.Adapter<StockAdapter.StockViewHolder>() {
                     .centerCrop()
                     .placeholder(R.drawable.image_load)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(imgItem)
+                    .into(imgItemFav)
 
                 itemView.setOnClickListener {
                     onItemClickListener.onItemClicked(itemStock)

@@ -21,4 +21,7 @@
     <string name="about">ABOUT</string>
     <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
+    <string name="best_before">Best Before :</string>
+    <string name="date_example">07 June, 2021</string>
+    <string name="fruit_example">Fuji Apple</string>
 </resources>
