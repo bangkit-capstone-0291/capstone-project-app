@@ -11,4 +11,5 @@
     <string name="total_text">Total Raw Material Stocks</string>
     <string name="category">Category</string>
     <string name="about_ikm">About IKM</string>
+    <string name="txt_empty">Oops! There’s no stock</string>
 </resources>

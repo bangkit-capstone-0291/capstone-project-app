@@ -12,25 +12,25 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/stockFragment"
+        android:id="@+id/navigation_stock"
         android:name="com.bangkit.electrateam.qualityumapp.ui.stock.StockFragment"
         android:label="@string/title_stock"
         tools:layout="@layout/fragment_stock" />
 
     <fragment
-        android:id="@+id/cameraFragment"
+        android:id="@+id/navigation_camera"
         android:name="com.bangkit.electrateam.qualityumapp.ui.camera.CameraFragment"
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />
 
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/navigation_favorite"
         android:name="com.bangkit.electrateam.qualityumapp.ui.favorite.FavoriteFragment"
         android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/navigation_profile"
         android:name="com.bangkit.electrateam.qualityumapp.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />

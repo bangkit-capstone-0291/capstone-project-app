@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp">
 
         <include
             android:id="@+id/cv_item_summary"
@@ -207,28 +208,6 @@
 
             <ImageView
                 android:id="@+id/img_smart_sentra1"
-                android:layout_width="296dp"
-                android:layout_height="92dp"
-                android:src="@drawable/smart_sentra"
-                tools:ignore="ContentDescription" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_smart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_smart_sentra1"
-            app:strokeColor="@color/green_sentra"
-            app:strokeWidth="1dp">
-
-            <ImageView
-                android:id="@+id/img_smart_"
                 android:layout_width="296dp"
                 android:layout_height="92dp"
                 android:src="@drawable/smart_sentra"

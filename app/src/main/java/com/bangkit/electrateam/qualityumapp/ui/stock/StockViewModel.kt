@@ -3,6 +3,8 @@ package com.bangkit.electrateam.qualityumapp.ui.stock
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bangkit.electrateam.qualityumapp.data.StockData
+import com.bangkit.electrateam.qualityumapp.utils.DataDummy
 
 class StockViewModel : ViewModel() {
 
@@ -10,4 +12,6 @@ class StockViewModel : ViewModel() {
         value = "This is dashboard Fragment"
     }
     val text: LiveData<String> = _text
+
+    fun getStock(): List<StockData> = DataDummy.generateDummyStock()
 }
