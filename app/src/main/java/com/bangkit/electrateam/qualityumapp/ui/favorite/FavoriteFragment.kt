@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.electrateam.qualityumapp.data.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentFavoriteBinding
@@ -58,8 +59,10 @@ class FavoriteFragment : Fragment() {
         favoriteAdapter.setOnItemClickListener(object : FavoriteAdapter.OnItemClickListener {
             override fun onItemClicked(stock: StockData) {
                 val action = stock.let {
+                    FavoriteFragmentDirections.actionNavigationFavoriteToDetailFragment(it)
                 }
                 action.let {
+                    findNavController().navigate(it)
                 }
             }
         })

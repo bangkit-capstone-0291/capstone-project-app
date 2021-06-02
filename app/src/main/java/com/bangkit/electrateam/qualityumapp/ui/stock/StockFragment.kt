@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bangkit.electrateam.qualityumapp.data.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentStockBinding
@@ -60,8 +61,10 @@ class StockFragment : Fragment() {
         stockAdapter.setOnItemClickListener(object : StockAdapter.OnItemClickListener {
             override fun onItemClicked(stock: StockData) {
                 val action = stock.let {
+                    StockFragmentDirections.actionNavigationStockToDetailFragment(it)
                 }
                 action.let {
+                    findNavController().navigate(it)
                 }
             }
         })

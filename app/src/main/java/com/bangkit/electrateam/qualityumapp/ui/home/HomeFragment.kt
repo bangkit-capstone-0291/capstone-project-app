@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentHomeBinding
+import com.bangkit.electrateam.qualityumapp.ui.favorite.FavoriteAdapter
 
 class HomeFragment : Fragment() {
 
@@ -32,6 +33,14 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, {
         })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (activity != null) {
+            
+        }
     }
 
     override fun onDestroyView() {
