@@ -28,8 +28,7 @@ class StockFragment : Fragment() {
         _binding = FragmentStockBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        stockViewModel =
-            ViewModelProvider(this).get(StockViewModel::class.java)
+        stockViewModel = ViewModelProvider(this).get(StockViewModel::class.java)
 
         return root
     }
@@ -38,7 +37,6 @@ class StockFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-
             val dataStock = stockViewModel.getStock()
 
             stockAdapter = StockAdapter()
