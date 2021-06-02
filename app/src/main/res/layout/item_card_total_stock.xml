@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_item_summary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardMaxElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_total_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:text="@string/total_text"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_total_fruit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_fruits_stock_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_value_fruit"
+            app:layout_constraintStart_toStartOf="@id/tv_total_text"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_text"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_value_fruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_total_fruit"
+            app:layout_constraintEnd_toStartOf="@id/tv_total_fruit"
+            app:layout_constraintStart_toEndOf="@id/img_total_fruit"
+            app:layout_constraintTop_toTopOf="@id/img_total_fruit"
+            tools:text="68" />
+
+        <TextView
+            android:id="@+id/tv_total_fruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fruits"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_total_fruit"
+            app:layout_constraintEnd_toStartOf="@id/border_one"
+            app:layout_constraintStart_toEndOf="@id/tv_value_fruit"
+            app:layout_constraintTop_toTopOf="@id/img_total_fruit" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/border_one"
+            android:layout_width="3dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/border_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_text" />
+
+        <ImageView
+            android:id="@+id/img_total_vegetable"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_vegetables_stock_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_value_vegetable"
+            app:layout_constraintStart_toEndOf="@id/border_one"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_text"
+            app:layout_constraintVertical_bias="0.538"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_value_vegetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_total_vegetable"
+            app:layout_constraintEnd_toStartOf="@id/tv_total_vegetable"
+            app:layout_constraintStart_toEndOf="@id/img_total_vegetable"
+            app:layout_constraintTop_toTopOf="@id/img_total_vegetable"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/tv_total_vegetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vegetables"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_total_vegetable"
+            app:layout_constraintEnd_toStartOf="@id/border_two"
+            app:layout_constraintStart_toEndOf="@id/tv_value_vegetable"
+            app:layout_constraintTop_toTopOf="@id/img_total_vegetable" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/border_two"
+            android:layout_width="3dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/border_one"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_text" />
+
+        <ImageView
+            android:id="@+id/img_total_other"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_others_stock_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_value_other"
+            app:layout_constraintStart_toEndOf="@id/border_two"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_text"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_value_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_total_other"
+            app:layout_constraintEnd_toStartOf="@id/tv_total_other"
+            app:layout_constraintStart_toEndOf="@id/img_total_other"
+            app:layout_constraintTop_toTopOf="@id/img_total_other"
+            tools:text="102" />
+
+        <TextView
+            android:id="@+id/tv_total_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/others"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_total_other"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_value_other"
+            app:layout_constraintTop_toTopOf="@id/img_total_other" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

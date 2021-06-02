@@ -8,5 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#6ABD46</color>
-    <color name="primarydark">#3CB806</color>
+    <color name="primary_dark">#3CB806</color>
+    <color name="fruit_card">#FFD0D0</color>
+    <color name="vegetable_card">#C5F3A6</color>
+    <color name="other_card">#F6D6C3</color>
+    <color name="red_ikm">#CE1212</color>
+    <color name="green_sentra">#98D4BB</color>
 </resources>

@@ -5,4 +5,10 @@
     <string name="title_camera">Camera</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_profile">Profile</string>
+    <string name="fruits">Fruits</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="others">Others</string>
+    <string name="total_text">Total Raw Material Stocks</string>
+    <string name="category">Category</string>
+    <string name="about_ikm">About IKM</string>
 </resources>
