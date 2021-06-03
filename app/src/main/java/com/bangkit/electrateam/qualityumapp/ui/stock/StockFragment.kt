@@ -10,10 +10,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentStockBinding
+import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 
 class StockFragment : Fragment() {
 
-    private lateinit var stockViewModel: StockViewModel
     private lateinit var stockAdapter: StockAdapter
     private var _binding: FragmentStockBinding? = null
 
@@ -27,22 +27,22 @@ class StockFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStockBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        stockViewModel = ViewModelProvider(this).get(StockViewModel::class.java)
-
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val dataStock = stockViewModel.getStock()
+
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(this, factory)[StockViewModel::class.java]
+            val dataStock = viewModel.getStock()
 
             stockAdapter = StockAdapter()
             setData(dataStock)
             onStockSelected()
+            onFabClicked()
         }
     }
 
@@ -68,6 +68,13 @@ class StockFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun onFabClicked() {
+        binding.fab.setOnClickListener {
+            val action = StockFragmentDirections.actionNavigationStockToAddActivity()
+            findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

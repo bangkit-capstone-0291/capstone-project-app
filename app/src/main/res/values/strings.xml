@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Qualityum App</string>
-    <string name="title_home">Home</string>
-    <string name="title_stock">Stock</string>
+    <string name="title_home">Qualityum App</string>
+    <string name="title_stock">Raw Material Stock</string>
     <string name="title_camera">Camera</string>
-    <string name="title_favorite">Favorite</string>
+    <string name="title_favorite">Favorite Stock</string>
     <string name="title_profile">Profile</string>
     <string name="fruits">Fruits</string>
     <string name="vegetables">Vegetables</string>
@@ -31,4 +31,9 @@
     <string name="description">Description</string>
     <string name="txt_description_example">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="detail_stock">Detail Stock</string>
+    <string name="fab_for_add_stock">FAB for add stock</string>
+    <string name="save">SAVE</string>
+    <string name="expired_date">Expired Date</string>
+    <string name="name">Name</string>
+    <string name="add_raw_material">Add Raw Material</string>
 </resources>

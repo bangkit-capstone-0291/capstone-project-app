@@ -10,10 +10,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentFavoriteBinding
+import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 
 class FavoriteFragment : Fragment() {
 
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private lateinit var viewModel: FavoriteViewModel
     private lateinit var favoriteAdapter: FavoriteAdapter
     private var _binding: FragmentFavoriteBinding? = null
 
@@ -26,9 +27,6 @@ class FavoriteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        favoriteViewModel =
-            ViewModelProvider(this).get(FavoriteViewModel::class.java)
-
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
@@ -39,6 +37,9 @@ class FavoriteFragment : Fragment() {
 
         if (activity != null) {
             showLoading(true)
+
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            viewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
             favoriteAdapter = FavoriteAdapter()
             onFavSelected()

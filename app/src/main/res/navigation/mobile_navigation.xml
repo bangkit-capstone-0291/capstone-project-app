@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_navigation_stock_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_navigation_stock_to_addActivity"
+            app:destination="@id/addActivity" />
     </fragment>
 
     <fragment
@@ -58,5 +61,10 @@
             android:name="stock"
             app:argType="com.bangkit.electrateam.qualityumapp.model.StockData" />
     </fragment>
+    <activity
+        android:id="@+id/addActivity"
+        android:name="com.bangkit.electrateam.qualityumapp.ui.add.AddActivity"
+        android:label="@string/add_raw_material"
+        tools:layout="@layout/activity_add" />
 
 </navigation>
