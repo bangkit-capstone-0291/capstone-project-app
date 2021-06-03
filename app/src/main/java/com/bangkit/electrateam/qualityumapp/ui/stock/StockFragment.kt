@@ -14,6 +14,7 @@ import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 
 class StockFragment : Fragment() {
 
+    private lateinit var viewModel: StockViewModel
     private lateinit var stockAdapter: StockAdapter
     private var _binding: FragmentStockBinding? = null
 
@@ -34,21 +35,27 @@ class StockFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+            showLoading(true)
 
             val factory = ViewModelFactory.getInstance(requireActivity())
-            val viewModel = ViewModelProvider(this, factory)[StockViewModel::class.java]
-            val dataStock = viewModel.getStock()
+            viewModel = ViewModelProvider(this, factory)[StockViewModel::class.java]
+            val dataDummy = viewModel.getDummyStock()
+
+
+            viewModel.getAllStock().observe(viewLifecycleOwner, {
+                setData(it)
+                showLoading(false)
+                if (it.isEmpty()) showEmpty(true)
+                else showEmpty(false)
+            })
 
             stockAdapter = StockAdapter()
-            setData(dataStock)
             onStockSelected()
             onFabClicked()
         }
     }
 
     private fun setData(data: List<StockData>) {
-        showLoading(false)
-        showEmpty(false)
         stockAdapter.setDataStock(data as ArrayList<StockData>)
         with(binding.rvStock) {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)

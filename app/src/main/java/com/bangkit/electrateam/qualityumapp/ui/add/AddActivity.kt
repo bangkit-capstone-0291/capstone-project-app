@@ -24,10 +24,20 @@ class AddActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.add_raw_material)
 
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[AddViewModel::class.java]
 
+        setDropDownMenu()
+        onButtonSaveClicked()
+
+        viewModel.observableState.observe(this, {
+            check(it)
+        })
+    }
+
+    private fun setDropDownMenu() {
         val items = listOf(
             getString(R.string.fruits),
             getString(R.string.vegetables),
@@ -35,47 +45,35 @@ class AddActivity : AppCompatActivity() {
         )
         val adapter = ArrayAdapter(this, R.layout.list_item, items)
         (binding.menuAddCategory.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-
-        onButtonSaveClicked()
     }
 
     private fun onButtonSaveClicked() {
         binding.addButton.setOnClickListener {
             val id = if (stock != null) stock?.id else null
-            with(binding) {
-                val name = addName.text.toString()
-                val category = autoCompleteCategory.text.toString()
-                val quantity = addQuantity.text
-                val expDate = addExpDate.text.toString()
-                val desc = addDescription.text.toString()
+            val name = binding.addName.text.toString()
+            val category = binding.autoCompleteCategory.text.toString()
+            val quantity = binding.addQuantity.text
+            val expDate = binding.addExpDate.text.toString()
+            val desc = binding.addDescription.text.toString()
 
-                if (name != "" && quantity != null) {
-                    val add = id?.let { id ->
-                        StockData(
-                            id = id,
-                            name = name,
-                            image = 0,
-                            category = category,
-                            quantity = quantity as Int,
-                            expDate = expDate,
-                            description = desc,
-                            quality = "",
-                            isFavorite = false,
-                        )
-                    }
-                    if (add != null) {
-                        viewModel.addStock(add)
-                    }
-                } else Toast.makeText(
-                    this@AddActivity,
-                    "Please Enter Data Correctly!",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            viewModel.observableState.observe(this, {
-                check(it)
-            })
+            if (name != "" && quantity != null) {
+                val add = StockData(
+                    id = id,
+                    name = name,
+                    image = 0,
+                    category = category,
+                    quantity = 0,
+                    expDate = expDate,
+                    description = desc,
+                    quality = " ",
+                    isFavorite = false,
+                )
+                viewModel.addStock(add)
+            } else Toast.makeText(
+                this@AddActivity,
+                "Please Enter Data Correctly!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -83,9 +81,9 @@ class AddActivity : AppCompatActivity() {
         when (status) {
             true -> {
                 finish()
-                Toast.makeText(this, "Item Added Successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.add_success), Toast.LENGTH_SHORT).show()
             }
-            false -> Toast.makeText(this, "Failed to Add Item", Toast.LENGTH_SHORT).show()
+            false -> Toast.makeText(this, getString(R.string.add_failed), Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -36,4 +36,6 @@
     <string name="expired_date">Expired Date</string>
     <string name="name">Name</string>
     <string name="add_raw_material">Add Raw Material</string>
+    <string name="add_success">Item Added Successfully</string>
+    <string name="add_failed">Failed to Add Item</string>
 </resources>
