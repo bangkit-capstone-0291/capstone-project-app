@@ -9,7 +9,7 @@ import com.bangkit.electrateam.qualityumapp.utils.DataMapper
 
 class StockRepository(
     private val localDataSource: LocalDataSource,
-    private val remoteDataSource: RemoteDataSource,
+    private val remoteDataSource: RemoteDataSource
 ) : StockDataSource {
 
     override fun getAllStock(): LiveData<List<StockData>> {
@@ -22,6 +22,11 @@ class StockRepository(
         return Transformations.map(localDataSource.getAllFavList()) {
             DataMapper.mapEntitiesToDomain(it)
         }
+    }
+
+    override fun insertStock(stock: StockData) {
+        val stockEntity = DataMapper.mapDomainToEntity(stock)
+        localDataSource.insertStock(stockEntity)
     }
 
     override fun setFavTvShow(stock: StockData, state: Boolean) {

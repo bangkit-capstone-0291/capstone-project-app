@@ -9,5 +9,7 @@ interface StockDataSource {
 
     fun getFavStock(): LiveData<List<StockData>>
 
+    fun insertStock(stock: StockData)
+
     fun setFavTvShow(stock: StockData, state: Boolean)
 }
