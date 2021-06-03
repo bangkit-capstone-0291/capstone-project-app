@@ -52,17 +52,17 @@ class AddActivity : AppCompatActivity() {
             val id = if (stock != null) stock?.id else null
             val name = binding.addName.text.toString()
             val category = binding.autoCompleteCategory.text.toString()
-            val quantity = binding.addQuantity.text
+            val quantity = binding.addQuantity.text.toString().toInt()
             val expDate = binding.addExpDate.text.toString()
             val desc = binding.addDescription.text.toString()
 
-            if (name != "" && quantity != null) {
+            if (name != "" && quantity != 0) {
                 val add = StockData(
                     id = id,
                     name = name,
                     image = 0,
                     category = category,
-                    quantity = 0,
+                    quantity = quantity,
                     expDate = expDate,
                     description = desc,
                     quality = " ",

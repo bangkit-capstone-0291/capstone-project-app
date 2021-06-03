@@ -20,7 +20,7 @@ data class StockEntity(
     var category: String,
 
     @ColumnInfo(name = "quantity")
-    var quantity: Int? = 0,
+    var quantity: Int? = 1,
 
     @ColumnInfo(name = "description")
     var description: String? = "",

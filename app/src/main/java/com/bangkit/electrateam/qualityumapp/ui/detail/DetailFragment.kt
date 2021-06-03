@@ -6,14 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentDetailBinding
+import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 
 class DetailFragment : Fragment() {
 
+    private lateinit var viewModel: DetailViewModel
     private val args by navArgs<DetailFragmentArgs>()
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
@@ -30,7 +33,17 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        populateData(args.stock)
+        if (activity != null) {
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+
+            viewModel.setSelectedStock(args.id)
+            viewModel.detailStock.observe(viewLifecycleOwner, {
+                populateData(it)
+                setFavouriteState(it.isFavorite)
+                onFavButtonClicked(it)
+            })
+        }
     }
 
     private fun populateData(data: StockData) {
@@ -51,7 +64,7 @@ class DetailFragment : Fragment() {
 
     private fun onFavButtonClicked(data: StockData) {
         binding.btnFavStock.setOnClickListener {
-            /*viewModel.setFavStock()*/
+            viewModel.setFavStock(data)
             if (!data.isFavorite) Toast.makeText(
                 context,
                 data.name + " " + "Added to Favorite",

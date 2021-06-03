@@ -9,7 +9,9 @@ interface StockDataSource {
 
     fun getFavStock(): LiveData<List<StockData>>
 
+    fun getDetailStock(id: Int): LiveData<StockData>
+
     fun insertStock(stock: StockData)
 
-    fun setFavTvShow(stock: StockData, state: Boolean)
+    fun setFavStock(stock: StockData, state: Boolean)
 }

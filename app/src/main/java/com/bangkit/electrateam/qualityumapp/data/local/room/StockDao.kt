@@ -13,9 +13,13 @@ interface StockDao {
     @Query("SELECT * FROM stock_entities where isFavorite = 1")
     fun getAllFav(): LiveData<List<StockEntity>>
 
+    @Transaction
+    @Query("SELECT * FROM stock_entities WHERE id = :id")
+    fun getDetailStock(id: Int): LiveData<StockEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStock(stock: StockEntity)
 
     @Update
-    fun updateStock(stock: StockEntity)
+    suspend fun updateStock(stock: StockEntity)
 }

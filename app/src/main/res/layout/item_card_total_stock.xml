@@ -69,7 +69,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/border_one"
-            android:layout_width="3dp"
+            android:layout_width="2dp"
             android:layout_height="25dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
@@ -120,7 +120,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/border_two"
-            android:layout_width="3dp"
+            android:layout_width="2dp"
             android:layout_height="25dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"

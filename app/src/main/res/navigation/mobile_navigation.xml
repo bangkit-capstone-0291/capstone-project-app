@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.bangkit.electrateam.qualityumapp.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/label_home"
         tools:layout="@layout/fragment_home">
         <deepLink
             android:id="@+id/deepLink_esmartikm"
@@ -21,8 +21,8 @@
     <fragment
         android:id="@+id/navigation_stock"
         android:name="com.bangkit.electrateam.qualityumapp.ui.stock.StockFragment"
-        android:label="@string/title_stock"
-        tools:layout="@layout/fragment_stock" >
+        android:label="@string/label_stock"
+        tools:layout="@layout/fragment_stock">
         <action
             android:id="@+id/action_navigation_stock_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -40,8 +40,8 @@
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.bangkit.electrateam.qualityumapp.ui.favorite.FavoriteFragment"
-        android:label="@string/title_favorite"
-        tools:layout="@layout/fragment_favorite" >
+        android:label="@string/label_favorite"
+        tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_navigation_favorite_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -56,10 +56,10 @@
         android:id="@+id/detailFragment"
         android:name="com.bangkit.electrateam.qualityumapp.ui.detail.DetailFragment"
         android:label="@string/detail_stock"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
         <argument
-            android:name="stock"
-            app:argType="com.bangkit.electrateam.qualityumapp.model.StockData" />
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <activity
         android:id="@+id/addActivity"

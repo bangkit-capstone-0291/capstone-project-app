@@ -9,7 +9,7 @@ data class StockData(
     var image: Int?,
     var name: String,
     var category: String,
-    var quantity: Int?,
+    var quantity: Int? = 1,
     var description: String?,
     var quality: String?,
     var expDate: String?,

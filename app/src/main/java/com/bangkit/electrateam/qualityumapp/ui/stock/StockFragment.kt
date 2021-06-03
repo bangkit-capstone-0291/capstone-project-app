@@ -67,11 +67,15 @@ class StockFragment : Fragment() {
     private fun onStockSelected() {
         stockAdapter.setOnItemClickListener(object : StockAdapter.OnItemClickListener {
             override fun onItemClicked(stock: StockData) {
-                val action = stock.let {
-                    StockFragmentDirections.actionNavigationStockToDetailFragment(it)
+                val action = stock.let { data ->
+                    data.id?.let {
+                        StockFragmentDirections.actionNavigationStockToDetailFragment(it)
+                    }
                 }
                 action.let {
-                    findNavController().navigate(it)
+                    if (it != null) {
+                        findNavController().navigate(it)
+                    }
                 }
             }
         })

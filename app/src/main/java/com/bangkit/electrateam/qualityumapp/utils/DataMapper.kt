@@ -17,6 +17,18 @@ object DataMapper {
         isFavorite = input.isFavorite
     )
 
+    fun mapEntityToDomain(input: StockEntity) = StockData(
+        id = input.id,
+        image = input.image,
+        name = input.name,
+        category = input.category,
+        quantity = input.quantity,
+        description = input.description,
+        quality = input.quality,
+        expDate = input.expDate,
+        isFavorite = input.isFavorite
+    )
+
     fun mapEntitiesToDomain(input: List<StockEntity>): List<StockData> =
         input.map {
             StockData(

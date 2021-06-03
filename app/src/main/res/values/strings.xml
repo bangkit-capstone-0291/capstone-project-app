@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Qualityum App</string>
-    <string name="title_home">Qualityum App</string>
-    <string name="title_stock">Raw Material Stock</string>
+    <string name="title_home">Home</string>
+    <string name="label_home">Qualityum App</string>
+    <string name="title_stock">Stock</string>
+    <string name="label_stock">Raw Material Stock</string>
     <string name="title_camera">Camera</string>
-    <string name="title_favorite">Favorite Stock</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="label_favorite">Favorite Stock</string>
     <string name="title_profile">Profile</string>
     <string name="fruits">Fruits</string>
     <string name="vegetables">Vegetables</string>
@@ -38,4 +41,5 @@
     <string name="add_raw_material">Add Raw Material</string>
     <string name="add_success">Item Added Successfully</string>
     <string name="add_failed">Failed to Add Item</string>
+    <string name="no_favorites_yet">No Favorites yet</string>
 </resources>

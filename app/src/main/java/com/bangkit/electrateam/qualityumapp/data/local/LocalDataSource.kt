@@ -14,15 +14,19 @@ class LocalDataSource private constructor(private val stockDao: StockDao) {
 
     fun getAllFavList(): LiveData<List<StockEntity>> = stockDao.getAllFav()
 
+    fun getDetailStock(id: Int): LiveData<StockEntity> = stockDao.getDetailStock(id)
+
     fun insertStock(stock: StockEntity) = runBlocking {
         this.launch(Dispatchers.IO) {
             stockDao.insertStock(stock)
         }
     }
 
-    fun setFavStock(stock: StockEntity, newState: Boolean) {
-        stock.isFavorite = newState
-        stockDao.updateStock(stock)
+    fun setFavStock(stock: StockEntity, newState: Boolean) = runBlocking {
+        this.launch(Dispatchers.IO) {
+            stock.isFavorite = newState
+            stockDao.updateStock(stock)
+        }
     }
 
     companion object {

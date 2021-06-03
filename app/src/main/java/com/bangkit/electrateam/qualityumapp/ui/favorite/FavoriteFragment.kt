@@ -28,8 +28,7 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,11 +42,17 @@ class FavoriteFragment : Fragment() {
 
             favoriteAdapter = FavoriteAdapter()
             onFavSelected()
+
+            viewModel.getFavStock().observe(viewLifecycleOwner, {
+                setDataFavorite(it)
+                showLoading(false)
+                if (it.isEmpty()) showEmpty(true)
+                else showEmpty(false)
+            })
         }
     }
 
-    private fun setData(data: List<StockData>) {
-        showLoading(false)
+    private fun setDataFavorite(data: List<StockData>) {
         favoriteAdapter.setDataFav(data as ArrayList<StockData>)
         with(binding.rvFavorite) {
             layoutManager = LinearLayoutManager(context)
@@ -59,14 +64,28 @@ class FavoriteFragment : Fragment() {
     private fun onFavSelected() {
         favoriteAdapter.setOnItemClickListener(object : FavoriteAdapter.OnItemClickListener {
             override fun onItemClicked(stock: StockData) {
-                val action = stock.let {
-                    FavoriteFragmentDirections.actionNavigationFavoriteToDetailFragment(it)
+                val action = stock.let { data ->
+                    data.id?.let {
+                        FavoriteFragmentDirections.actionNavigationFavoriteToDetailFragment(it)
+                    }
                 }
                 action.let {
-                    findNavController().navigate(it)
+                    if (it != null) {
+                        findNavController().navigate(it)
+                    }
                 }
             }
         })
+    }
+
+    private fun showEmpty(state: Boolean) {
+        if (state) {
+            binding.imgEmptyFav.visibility = View.VISIBLE
+            binding.tvEmptyFav.visibility = View.VISIBLE
+        } else {
+            binding.imgEmptyFav.visibility = View.GONE
+            binding.tvEmptyFav.visibility = View.GONE
+        }
     }
 
     private fun showLoading(state: Boolean) {

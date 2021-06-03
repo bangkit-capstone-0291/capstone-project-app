@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
-            android:inputType="textCapSentences"
+            android:inputType="number"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 

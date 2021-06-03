@@ -1,22 +1,27 @@
 package com.bangkit.electrateam.qualityumapp.ui.detail
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.bangkit.electrateam.qualityumapp.data.StockRepository
 import com.bangkit.electrateam.qualityumapp.model.StockData
 
 class DetailViewModel(private val stockRepository: StockRepository) : ViewModel() {
 
-    /*fun addFavStock(stock: StockData) = stockRepository.insert(user)
+    val stockId = MutableLiveData<Int>()
 
-    fun setFavStock() {
-        val stockResource = detailMovie.value
-        if (movieResource != null) {
-            val movie = movieResource.data
-            if (movie != null) {
-                val movieEntity = movie.mMovie
-                val newState = !movieEntity.isFavorite
-                repository.setFavMovie(movieEntity, newState)
-            }
+    var detailStock: LiveData<StockData> =
+        Transformations.switchMap(stockId) {
+            stockRepository.getDetailStock(it)
         }
-    }*/
+
+    fun setSelectedStock(stockId: Int) {
+        this.stockId.value = stockId
+    }
+
+    fun setFavStock(stock: StockData) {
+        val newState = !stock.isFavorite
+        stockRepository.setFavStock(stock, newState)
+    }
 }

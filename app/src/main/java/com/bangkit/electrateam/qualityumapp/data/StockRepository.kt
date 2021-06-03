@@ -24,12 +24,18 @@ class StockRepository(
         }
     }
 
+    override fun getDetailStock(id: Int): LiveData<StockData> {
+        return Transformations.map(localDataSource.getDetailStock(id)) {
+            DataMapper.mapEntityToDomain(it)
+        }
+    }
+
     override fun insertStock(stock: StockData) {
         val stockEntity = DataMapper.mapDomainToEntity(stock)
         localDataSource.insertStock(stockEntity)
     }
 
-    override fun setFavTvShow(stock: StockData, state: Boolean) {
+    override fun setFavStock(stock: StockData, state: Boolean) {
         val stockEntity = DataMapper.mapDomainToEntity(stock)
         localDataSource.setFavStock(stockEntity, state)
     }
@@ -37,8 +43,6 @@ class StockRepository(
     companion object {
         @Volatile
         private var instance: StockRepository? = null
-
-        private const val TAG = "StockRepository"
 
         fun getInstance(
             localDataSource: LocalDataSource,
