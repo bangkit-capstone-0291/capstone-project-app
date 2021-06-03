@@ -1,5 +1,7 @@
 package com.bangkit.electrateam.qualityumapp.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -22,8 +25,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,11 +35,28 @@ class HomeFragment : Fragment() {
 
             val factory = ViewModelFactory.getInstance(requireActivity())
             val viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+
+            binding.cvEsmartIkm.setOnClickListener {
+                val urlIntent = Intent(Intent.ACTION_VIEW)
+                urlIntent.data = Uri.parse(ESMART_IKM_URL)
+                requireActivity().startActivity(urlIntent)
+            }
+
+            binding.cvSmartSentra.setOnClickListener {
+                val urlIntent = Intent(Intent.ACTION_VIEW)
+                urlIntent.data = Uri.parse(SMART_SENTRA_URL)
+                requireActivity().startActivity(urlIntent)
+            }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val ESMART_IKM_URL = "http://esmartikm.id/"
+        private const val SMART_SENTRA_URL = "https://smartsentra.kemenperin.go.id/"
     }
 }

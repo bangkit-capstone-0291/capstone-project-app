@@ -9,10 +9,12 @@ import kotlinx.coroutines.runBlocking
 
 class LocalDataSource private constructor(private val stockDao: StockDao) {
 
-
     fun getAllStockList(): LiveData<List<StockEntity>> = stockDao.getALlStock()
 
     fun getAllFavList(): LiveData<List<StockEntity>> = stockDao.getAllFav()
+
+    fun getListCategory(category: String): LiveData<List<StockEntity>> =
+        stockDao.getListCategory(category)
 
     fun getDetailStock(id: Int): LiveData<StockEntity> = stockDao.getDetailStock(id)
 

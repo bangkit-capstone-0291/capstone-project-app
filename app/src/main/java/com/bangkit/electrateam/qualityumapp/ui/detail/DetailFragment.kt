@@ -1,5 +1,6 @@
 package com.bangkit.electrateam.qualityumapp.ui.detail
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentDetailBinding
 import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 class DetailFragment : Fragment() {
 
@@ -54,9 +56,11 @@ class DetailFragment : Fragment() {
             tvQuantityValue.text = data.quantity.toString()
             tvExpValue.text = data.expDate
             tvDescriptionValue.text = data.description
+            val img = Uri.parse(data.image)
             Glide.with(this@DetailFragment)
-                .load(data.image)
+                .load(img)
                 .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.drawable.image_load)
                 .into(imgDetailStock)
         }

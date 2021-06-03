@@ -1,5 +1,9 @@
 package com.bangkit.electrateam.qualityumapp.ui.add
 
+import android.app.Activity
+import android.content.ContentValues
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -16,6 +20,7 @@ class AddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBinding
     private lateinit var viewModel: AddViewModel
     private var stock: StockData? = null
+    private var selectedImageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,27 @@ class AddActivity : AppCompatActivity() {
         viewModel.observableState.observe(this, {
             check(it)
         })
+
+        binding.btnChoose.setOnClickListener {
+            Intent(Intent.ACTION_PICK).also {
+                it.type = "image/*"
+                val mimeTypes = arrayOf("image/jpeg", "image/png")
+                it.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+                startActivityForResult(it, REQUEST_CODE_PICK_IMAGE)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_PICK_IMAGE -> {
+                    selectedImageUri = data?.data
+                    binding.imgAddOthers.setImageURI(selectedImageUri)
+                }
+            }
+        }
     }
 
     private fun setDropDownMenu() {
@@ -51,6 +77,7 @@ class AddActivity : AppCompatActivity() {
         binding.addButton.setOnClickListener {
             val id = if (stock != null) stock?.id else null
             val name = binding.addName.text.toString()
+            val image = selectedImageUri.toString()
             val category = binding.autoCompleteCategory.text.toString()
             val quantity = binding.addQuantity.text.toString().toInt()
             val expDate = binding.addExpDate.text.toString()
@@ -60,7 +87,7 @@ class AddActivity : AppCompatActivity() {
                 val add = StockData(
                     id = id,
                     name = name,
-                    image = 0,
+                    image = image,
                     category = category,
                     quantity = quantity,
                     expDate = expDate,
@@ -90,5 +117,9 @@ class AddActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
+    }
+
+    companion object {
+        const val REQUEST_CODE_PICK_IMAGE = 101
     }
 }

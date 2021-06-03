@@ -20,7 +20,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         //Base Url
-        buildConfigField 'String', 'BASE_URL', '"https://apt-index-313812.et.r.appspot.com/image"'
+        buildConfigField 'String', 'BASE_URL', '"https://apt-index-313812.et.r.appspot.com/"'
     }
 
     buildTypes {

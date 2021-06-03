@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class StockData(
     var id: Int?,
-    var image: Int?,
+    var image: String?,
     var name: String,
     var category: String,
     var quantity: Int? = 1,

@@ -1,5 +1,6 @@
 package com.bangkit.electrateam.qualityumapp.ui.stock
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -47,7 +48,7 @@ class StockAdapter : RecyclerView.Adapter<StockAdapter.StockViewHolder>() {
                 tvCategory.text = itemStock.category
 
                 Glide.with(itemView.context)
-                    .load(itemStock.image)
+                    .load(Uri.parse(itemStock.image))
                     .centerCrop()
                     .placeholder(R.drawable.image_load)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)

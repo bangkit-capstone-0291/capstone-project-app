@@ -42,4 +42,5 @@
     <string name="add_success">Item Added Successfully</string>
     <string name="add_failed">Failed to Add Item</string>
     <string name="no_favorites_yet">No Favorites yet</string>
+    <string name="choose_image">Choose Image</string>
 </resources>

@@ -18,6 +18,12 @@ class StockRepository(
         }
     }
 
+    override fun getAllCategory(category: String): LiveData<List<StockData>> {
+        return Transformations.map(localDataSource.getListCategory(category)) {
+            DataMapper.mapEntitiesToDomain(it)
+        }
+    }
+
     override fun getFavStock(): LiveData<List<StockData>> {
         return Transformations.map(localDataSource.getAllFavList()) {
             DataMapper.mapEntitiesToDomain(it)

@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_opt">#F9FCFB</color>
     <color name="primary">#6ABD46</color>
     <color name="primary_dark">#3CB806</color>
     <color name="fruit_card">#FFD0D0</color>

@@ -7,6 +7,8 @@ interface StockDataSource {
 
     fun getAllStock(): LiveData<List<StockData>>
 
+    fun getAllCategory(category: String): LiveData<List<StockData>>
+
     fun getFavStock(): LiveData<List<StockData>>
 
     fun getDetailStock(id: Int): LiveData<StockData>

@@ -12,7 +12,7 @@ object DataDummy {
         data.add(
             StockData(
                 1,
-                R.drawable.apple_example,
+                "R.drawable.apple_example",
                 "Apple",
                 "Fruits",
                 20,
@@ -25,7 +25,7 @@ object DataDummy {
         data.add(
             StockData(
                 2,
-                R.drawable.banana_example,
+                "R.drawable.banana_example",
                 "Banana",
                 "Fruits",
                 47,
@@ -38,7 +38,7 @@ object DataDummy {
         data.add(
             StockData(
                 3,
-                R.drawable.orange_example,
+                "R.drawable.orange_example",
                 "Orange",
                 "Fruits",
                 108,
@@ -51,7 +51,7 @@ object DataDummy {
         data.add(
             StockData(
                 4,
-                R.drawable.fuji_apple,
+                "R.drawable.fuji_apple",
                 "Fuji Apple",
                 "Fruits",
                 31,
@@ -63,7 +63,7 @@ object DataDummy {
 
         data.add(
             StockData(
-                5, R.drawable.broccoli,
+                5, "R.drawable.broccoli",
                 "Broccoli",
                 "Vegetables",
                 5,
@@ -76,7 +76,7 @@ object DataDummy {
         data.add(
             StockData(
                 6,
-                R.drawable.flour,
+                "R.drawable.flour",
                 "Flour",
                 "Others",
                 80,
@@ -89,7 +89,7 @@ object DataDummy {
         data.add(
             StockData(
                 7,
-                R.drawable.strawberry,
+                "R.drawable.strawberry",
                 "Strawberry",
                 "Fruits",
                 33,

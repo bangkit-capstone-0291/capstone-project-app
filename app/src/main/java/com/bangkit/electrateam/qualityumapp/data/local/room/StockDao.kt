@@ -13,6 +13,9 @@ interface StockDao {
     @Query("SELECT * FROM stock_entities where isFavorite = 1")
     fun getAllFav(): LiveData<List<StockEntity>>
 
+    @Query("SELECT * FROM stock_entities where category like :category")
+    fun getListCategory(category: String): LiveData<List<StockEntity>>
+
     @Transaction
     @Query("SELECT * FROM stock_entities WHERE id = :id")
     fun getDetailStock(id: Int): LiveData<StockEntity>

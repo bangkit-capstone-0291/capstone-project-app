@@ -1,5 +1,6 @@
 package com.bangkit.electrateam.qualityumapp.ui.favorite
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -49,7 +50,7 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>
                 tvCategory.text = itemStock.category
 
                 Glide.with(itemView.context)
-                    .load(itemStock.image)
+                    .load(Uri.parse(itemStock.image))
                     .centerCrop()
                     .placeholder(R.drawable.image_load)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)

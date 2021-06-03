@@ -11,7 +11,7 @@ data class StockEntity(
     var id: Int? = null,
 
     @ColumnInfo(name = "image")
-    var image: Int?,
+    var image: String?,
 
     @ColumnInfo(name = "name")
     var name: String,
