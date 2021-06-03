@@ -1,8 +1,16 @@
 const express = require('express')
 const multer = require('multer')
+const tf = require('@tensorflow/tfjs')
+const tfnode = require('@tensorflow/tfjs-node')
+const {Storage} = require('@google-cloud/storage')
+const request = require('request')
 const Fruit = require('../models/fruit')
 const auth = require('../middleware/auth')
 const router = new express.Router()
+
+const storage = new Storage()
+
+const bucket = storage.bucket('b21-cap0291')
 
 router.post('/fruits', auth, async (req, res) => {
     // const image = new Image(req.body)
@@ -40,21 +48,83 @@ router.post('/fruits/:id/image', auth, upload.single('image'), async (req, res) 
         if (!fruit) {
             return res.status(404).send()
         }
-        fruit.image = req.file.buffer
+        // fruit.image = req.file.buffer
+        // await fruit.save()
+        // res.send(fruit)
+        const blob = bucket.file(_id+'.png')
+        const blobStream = blob.createWriteStream()
+
+        blobStream.on('finish', async () => {
+            const publicUrl = `https://storage.googleapis.com/b21-cap0291/${blob.name}`
+            fruit.image = publicUrl
+            await fruit.save()
+        })
+
+        const model = await tf.loadLayersModel('file://mlModel/model.json')
+        var tensor = tfnode.node.decodeImage(req.file.buffer, 3)
+        tensor = tf.image.resizeBilinear(tensor, [100,100])
+        var tensor_4d = tf.tensor4d(tensor.dataSync(), [1,100,100,3])
+        tensor_4d = tensor_4d.div(tf.scalar(255))
+
+        
+        const prediction = model.predict(tensor_4d)
+    
+        const arrPrediction = await prediction.dataSync()
+
+        var indexMax = -1
+        var valueMax = 0
+        var index = 0
+        
+        arrPrediction.forEach((element) => {
+            if (element>valueMax) {
+                indexMax = index
+                valueMax = element
+            }
+            index += 1
+        })
+    
+        var result
+        switch (indexMax) {
+            case 0:
+                result = "Apple Good"
+                break
+            case 1:
+                result = "Apple Bad"
+                break
+            case 2:
+                result = "Banana Bad"
+                break
+            case 3:
+                result = "Banana Good"
+                break
+            case 4:
+                result = "Orange Bad"
+                break
+            case 5:
+                result = "Orange Good"
+        }
+        
+
+        fruit.predictionResult = result
         await fruit.save()
-        res.send(fruit)
+        
+        blobStream.end(req.file.buffer)
+
+        res.status(200).send(fruit)
 
     } catch (e) {
-        res.status(500).send()
+        res.status(500).send(e)
     }
 }, (error, req, res, next) => {
     res.status(400).send({ error: error.message})
 })
 
+
+
 router.get('/fruits', auth, async (req, res) => {
     try {
         await req.user.populate('fruits').execPopulate()
-        res.send()
+        res.send(req.user.fruits)
     } catch (e) {
         res.status(500).send()
     }

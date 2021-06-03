@@ -17,7 +17,10 @@ const fruitSchema = new mongoose.Schema({
         ref: 'User'
     },
     image: {
-        type: Buffer
+        type: String
+    },
+    predictionResult : {
+        type: String
     }
 }, {
     timestamps : true

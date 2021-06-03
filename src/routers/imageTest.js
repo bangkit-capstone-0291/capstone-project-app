@@ -3,10 +3,7 @@ const tf = require('@tensorflow/tfjs')
 const tfnode = require('@tensorflow/tfjs-node')
 const multer = require('multer')
 
-const app = express()
-const port = process.env.PORT || 3000
-
-app.use(express.json())
+const router = new express.Router()
 
 const upload = multer({
     limits: {
@@ -21,7 +18,7 @@ const upload = multer({
 })
 
 
-app.post('/image', upload.single("image"), async (req, res) => {
+router.post('/image', upload.single("image"), async (req, res) => {
     const model = await tf.loadLayersModel('file://mlModel/model.json')
     var tensor = tfnode.node.decodeImage(req.file.buffer, 3)
     tensor = tf.image.resizeBilinear(tensor, [100,100])
@@ -70,15 +67,5 @@ app.post('/image', upload.single("image"), async (req, res) => {
     res.status(400).send({error: error.message})
 })
 
-app.get('/model', async (req, res) => {
-    const model = await tf.loadLayersModel('file://mlModel/model.json')
-    res.send(model)
-})
 
-app.get('/', (req, res) => {
-    res.send('OK')
-})
-
-app.listen(port, () => {
-    console.log('Server is up on port ' + port)
-})
+module.exports = router
