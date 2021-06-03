@@ -52,11 +52,11 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.bangkit.electrateam.qualityumapp.ui.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="@string/detail_stock"
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="stock"
-            app:argType="com.bangkit.electrateam.qualityumapp.data.StockData" />
+            app:argType="com.bangkit.electrateam.qualityumapp.model.StockData" />
     </fragment>
 
 </navigation>

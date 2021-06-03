@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.bangkit.electrateam.qualityumapp.R
-import com.bangkit.electrateam.qualityumapp.data.StockData
+import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentDetailBinding
 import com.bumptech.glide.Glide
 

@@ -14,11 +14,8 @@ interface StockDao {
     fun getAllFav(): LiveData<List<StockEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(stock: StockEntity)
+    suspend fun insertStock(stock: StockEntity)
 
     @Update
-    fun updateTvShow(stock: StockEntity)
-
-    @Delete
-    suspend fun deleteUser(stock: StockEntity)
+    fun updateStock(stock: StockEntity)
 }

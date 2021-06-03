@@ -1,7 +1,7 @@
 package com.bangkit.electrateam.qualityumapp.utils
 
 import com.bangkit.electrateam.qualityumapp.R
-import com.bangkit.electrateam.qualityumapp.data.StockData
+import com.bangkit.electrateam.qualityumapp.model.StockData
 
 object DataDummy {
 

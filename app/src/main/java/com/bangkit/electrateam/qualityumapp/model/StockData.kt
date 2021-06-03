@@ -1,4 +1,4 @@
-package com.bangkit.electrateam.qualityumapp.data
+package com.bangkit.electrateam.qualityumapp.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -9,9 +9,9 @@ data class StockData(
     var image: Int,
     var name: String,
     var category: String,
-    var quantity: Int,
+    var quantity: Int?,
     var description: String?,
-    var quality: String,
+    var quality: String?,
     var expDate: String?,
     var isFavorite: Boolean = false
 ) : Parcelable
