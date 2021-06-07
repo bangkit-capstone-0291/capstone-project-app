@@ -79,14 +79,19 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
 
+    // CameraX
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    implementation "androidx.camera:camera-view:$camerax_view_version"
+
     // Preference
     implementation "androidx.preference:preference-ktx:$preference_version"
+
+    // Splash
+    implementation "com.airbnb.android:lottie:$lottie_version"
 
     // Testing
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-
-    // Splash
-    implementation 'com.airbnb.android:lottie:3.4.0'
 }
