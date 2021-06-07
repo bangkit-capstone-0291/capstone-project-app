@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
-mongoose.connect('mongodb+srv://gustav:mcdonald@cluster0.rubm2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+dotenv.config()
+
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useCreateIndex: true
 })

@@ -21,7 +21,11 @@ const fruitSchema = new mongoose.Schema({
     },
     predictionResult : {
         type: String
+    },
+    orangePrediction : {
+        type: Number
     }
+
 }, {
     timestamps : true
 })

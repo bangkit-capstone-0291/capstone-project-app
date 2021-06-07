@@ -19,7 +19,7 @@ const upload = multer({
 
 
 router.post('/image', upload.single("image"), async (req, res) => {
-    const model = await tf.loadLayersModel('file://mlModel/model.json')
+    const model = await tf.loadLayersModel('file://mlModel/fruit-classification/model.json')
     var tensor = tfnode.node.decodeImage(req.file.buffer, 3)
     tensor = tf.image.resizeBilinear(tensor, [100,100])
     var tensor_4d = tf.tensor4d(tensor.dataSync(), [1,100,100,3])

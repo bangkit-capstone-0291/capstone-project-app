@@ -1,10 +1,11 @@
 const express = require('express')
+const dotenv = require('dotenv')
 require('./db/mongoose')
 const userRouter = require('./routers/user')
 const fruitRouter = require('./routers/fruit')
 const imageTestRouter = require('./routers/imageTest')
 
-
+dotenv.config()
 const app = express()
 const port = process.env.PORT || 8080
 
