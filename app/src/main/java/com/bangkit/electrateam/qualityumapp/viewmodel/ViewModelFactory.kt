@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.electrateam.qualityumapp.data.StockRepository
 import com.bangkit.electrateam.qualityumapp.di.Injection
-import com.bangkit.electrateam.qualityumapp.ui.add.AddViewModel
+import com.bangkit.electrateam.qualityumapp.ui.add.others.AddOthersViewModel
 import com.bangkit.electrateam.qualityumapp.ui.detail.DetailViewModel
 import com.bangkit.electrateam.qualityumapp.ui.favorite.FavoriteViewModel
 import com.bangkit.electrateam.qualityumapp.ui.home.HomeViewModel
@@ -33,8 +33,8 @@ class ViewModelFactory private constructor(private val repository: StockReposito
                 StockViewModel(repository) as T
             }
 
-            modelClass.isAssignableFrom(AddViewModel::class.java) -> {
-                AddViewModel(repository) as T
+            modelClass.isAssignableFrom(AddOthersViewModel::class.java) -> {
+                AddOthersViewModel(repository) as T
             }
 
             else -> throw Throwable("Unknown ViewModel Class: " + modelClass.name)

@@ -1,4 +1,4 @@
-package com.bangkit.electrateam.qualityumapp.ui.add
+package com.bangkit.electrateam.qualityumapp.ui.add.others
 
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -10,28 +10,28 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.electrateam.qualityumapp.R
-import com.bangkit.electrateam.qualityumapp.databinding.ActivityAddBinding
+import com.bangkit.electrateam.qualityumapp.databinding.ActivityAddOthersBinding
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 
-class AddActivity : AppCompatActivity() {
+class AddOthersActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAddBinding
-    private lateinit var viewModel: AddViewModel
+    private lateinit var binding: ActivityAddOthersBinding
+    private lateinit var othersViewModel: AddOthersViewModel
     private var stock: StockData? = null
     private var selectedImageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityAddBinding.inflate(layoutInflater)
+        binding = ActivityAddOthersBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.add_raw_material)
 
         val factory = ViewModelFactory.getInstance(this)
-        viewModel = ViewModelProvider(this, factory)[AddViewModel::class.java]
+        othersViewModel = ViewModelProvider(this, factory)[AddOthersViewModel::class.java]
 
         val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             binding.imgAddOthers.setImageURI(uri)
@@ -41,7 +41,7 @@ class AddActivity : AppCompatActivity() {
         setDropDownMenu()
         onButtonSaveClicked()
 
-        viewModel.observableState.observe(this, {
+        othersViewModel.observableState.observe(this, {
             check(it)
         })
 
@@ -82,9 +82,9 @@ class AddActivity : AppCompatActivity() {
                     quality = " ",
                     isFavorite = false,
                 )
-                viewModel.addStock(add)
+                othersViewModel.addStock(add)
             } else Toast.makeText(
-                this@AddActivity,
+                this@AddOthersActivity,
                 getString(R.string.txt_data_not_correct),
                 Toast.LENGTH_SHORT
             ).show()

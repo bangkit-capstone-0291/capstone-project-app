@@ -10,48 +10,48 @@
         android:id="@+id/rv_stock"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="8dp"
         android:clipToPadding="false"
+        android:padding="4dp"
         tools:listitem="@layout/item_stock" />
 
     <ImageView
         android:id="@+id/img_empty_stock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_empty_box_icon"
         android:layout_gravity="center"
+        android:src="@drawable/ic_empty_box_icon"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_empty_stock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="250dp"
         android:text="@string/txt_empty"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_gravity="center"/>
+        android:textSize="16sp" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/fab_for_add_stock"
         android:src="@drawable/ic_add_white_24dp"
         app:backgroundTint="@color/primary"
         app:fabSize="normal"
-        app:tint="@color/white"
         app:hideOnScroll="true"
-        android:layout_gravity="bottom|end"
-        android:contentDescription="@string/fab_for_add_stock" />
+        app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

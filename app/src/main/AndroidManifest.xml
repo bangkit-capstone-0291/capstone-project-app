@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bangkit.electrateam.qualityumapp">
 
-
     <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,6 +19,8 @@
         android:theme="@style/Theme.QualityumApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ui.add.fruits.AddFruitsActivity"></activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.bangkit.electrateam.qualityumapp.provider"
@@ -30,9 +31,9 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".ui.camera.CameraPreviewActivity"></activity>
-        <activity android:name=".ui.camera.CameraActivity"></activity>
-        <activity android:name=".ui.add.AddActivity" />
+        <activity android:name=".ui.camera.CameraPreviewActivity" />
+        <activity android:name=".ui.camera.CameraActivity" />
+        <activity android:name=".ui.add.others.AddOthersActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.SplashScreenActivity"
@@ -44,4 +45,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

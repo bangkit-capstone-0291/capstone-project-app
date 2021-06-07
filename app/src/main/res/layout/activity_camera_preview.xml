@@ -31,7 +31,7 @@
         android:backgroundTint="@color/white_opt"
         android:text="Prediction"
         android:textSize="12sp"
-        app:icon="@drawable/ic_back_icon"
+        app:icon="@drawable/ic_next_icon"
         app:iconGravity="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

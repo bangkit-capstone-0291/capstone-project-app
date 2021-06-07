@@ -71,7 +71,7 @@
 
     <activity
         android:id="@+id/addActivity"
-        android:name="com.bangkit.electrateam.qualityumapp.ui.add.AddActivity"
+        android:name="com.bangkit.electrateam.qualityumapp.ui.add.others.AddOthersActivity"
         android:label="@string/add_raw_material"
-        tools:layout="@layout/activity_add" />
+        tools:layout="@layout/activity_add_others" />
 </navigation>
