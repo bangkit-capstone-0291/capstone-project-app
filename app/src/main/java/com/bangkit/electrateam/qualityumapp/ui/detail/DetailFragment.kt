@@ -56,9 +56,8 @@ class DetailFragment : Fragment() {
             tvQuantityValue.text = data.quantity.toString()
             tvExpValue.text = data.expDate
             tvDescriptionValue.text = data.description
-            val img = Uri.parse(data.image)
             Glide.with(this@DetailFragment)
-                .load(img)
+                .load(Uri.parse(data.image))
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.drawable.image_load)

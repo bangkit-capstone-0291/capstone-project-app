@@ -144,6 +144,9 @@ class CameraActivity : AppCompatActivity() {
                     val msg = "Photo capture succeeded: $savedUri"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
+                    val nextIntent = Intent(this@CameraActivity, CameraPreviewActivity::class.java)
+                    nextIntent.putExtra(CameraPreviewActivity.EXTRA_IMAGE, savedUri.toString())
+                    startActivity(nextIntent)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
