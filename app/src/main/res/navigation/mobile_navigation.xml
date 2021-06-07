@@ -32,10 +32,16 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_camera"
+        android:id="@+id/camera_preview"
         android:name="com.bangkit.electrateam.qualityumapp.ui.camera.CameraFragment"
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />
+
+    <activity
+        android:id="@+id/navigation_camera"
+        android:name="com.bangkit.electrateam.qualityumapp.ui.camera.CameraActivity"
+        android:label="@string/title_camera"
+        tools:layout="@layout/activity_camera" />
 
     <fragment
         android:id="@+id/navigation_favorite"
@@ -52,6 +58,7 @@
         android:name="com.bangkit.electrateam.qualityumapp.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.bangkit.electrateam.qualityumapp.ui.detail.DetailFragment"
@@ -61,10 +68,10 @@
             android:name="id"
             app:argType="integer" />
     </fragment>
+
     <activity
         android:id="@+id/addActivity"
         android:name="com.bangkit.electrateam.qualityumapp.ui.add.AddActivity"
         android:label="@string/add_raw_material"
         tools:layout="@layout/activity_add" />
-
 </navigation>
