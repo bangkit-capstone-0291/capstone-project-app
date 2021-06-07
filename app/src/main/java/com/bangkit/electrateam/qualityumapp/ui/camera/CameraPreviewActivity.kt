@@ -19,7 +19,7 @@ class CameraPreviewActivity : AppCompatActivity() {
         binding = ActivityCameraPreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val uriImage = intent.getStringExtra(EXTRA_IMAGE)
+        val uriImage = intent.getStringExtra(EXTRA_IMAGE_CAPTURE)
 
         Glide.with(this)
             .load(Uri.parse(uriImage))
@@ -37,6 +37,7 @@ class CameraPreviewActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_IMAGE = "extra_image"
+        const val EXTRA_IMAGE_CAPTURE = "extra_image_capture"
+        const val EXTRA_IMAGE_SELECTED = "extra_image_selected"
     }
 }

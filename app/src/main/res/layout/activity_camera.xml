@@ -10,6 +10,8 @@
         android:id="@+id/viewFinder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_camera_capture"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,5 +39,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewFinder" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/btn_open_gallery"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_camera_capture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewFinder"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/gallery" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

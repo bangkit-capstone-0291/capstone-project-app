@@ -32,7 +32,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/camera_preview"
+        android:id="@+id/cameraFragment"
         android:name="com.bangkit.electrateam.qualityumapp.ui.camera.CameraFragment"
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />

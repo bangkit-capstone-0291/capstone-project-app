@@ -7,37 +7,76 @@
     tools:context=".ui.camera.CameraFragment">
 
     <ImageView
-        android:id="@+id/img_predict"
+        android:id="@+id/image_result"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/uploadphoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Choose Upload Media"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/image_result"
+        app:layout_constraintStart_toStartOf="@+id/image_result"
+        app:layout_constraintTop_toBottomOf="@+id/image_result" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/open_camera"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="@+id/image_result"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/camera" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/open_gallery"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="@+id/image_result"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/gallery" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="48dp"
-        android:src="@drawable/image_load"
-        app:layout_constraintBottom_toTopOf="@id/btn_add_image"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:max="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/open_gallery"
+        tools:progress="70" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_add_image"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Choose Image"
-        app:layout_constraintBottom_toTopOf="@id/btn_prediction"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        app:layout_constraintEnd_toEndOf="@+id/open_camera"
+        app:layout_constraintStart_toStartOf="@+id/open_gallery"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_prediction"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="48dp"
-        android:text="Prediction"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/btn_upload"
+        app:layout_constraintStart_toStartOf="@+id/btn_upload"
+        app:layout_constraintTop_toBottomOf="@+id/btn_upload"
+        tools:text="Result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

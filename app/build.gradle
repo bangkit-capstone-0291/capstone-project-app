@@ -87,11 +87,14 @@ dependencies {
     // Preference
     implementation "androidx.preference:preference-ktx:$preference_version"
 
-    // Splash
-    implementation "com.airbnb.android:lottie:$lottie_version"
-
     // Testing
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+    // Splash
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //upload
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

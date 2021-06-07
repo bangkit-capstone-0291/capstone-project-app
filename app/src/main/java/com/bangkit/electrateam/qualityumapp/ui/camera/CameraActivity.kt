@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -39,6 +40,12 @@ class CameraActivity : AppCompatActivity() {
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            val nextIntent = Intent(this@CameraActivity, CameraPreviewActivity::class.java)
+            nextIntent.putExtra(CameraPreviewActivity.EXTRA_IMAGE_CAPTURE, uri.toString())
+            startActivity(nextIntent)
+        }
+
         if (allPermissionsGranted()) {
             startCamera()
         } else {
@@ -57,6 +64,10 @@ class CameraActivity : AppCompatActivity() {
         binding.btnCloseCamera.setOnClickListener {
             val backIntent = Intent(this@CameraActivity, MainActivity::class.java)
             startActivity(backIntent)
+        }
+
+        binding.btnOpenGallery.setOnClickListener {
+            getContent.launch("image/*")
         }
     }
 
@@ -145,7 +156,7 @@ class CameraActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
                     val nextIntent = Intent(this@CameraActivity, CameraPreviewActivity::class.java)
-                    nextIntent.putExtra(CameraPreviewActivity.EXTRA_IMAGE, savedUri.toString())
+                    nextIntent.putExtra(CameraPreviewActivity.EXTRA_IMAGE_CAPTURE, savedUri.toString())
                     startActivity(nextIntent)
                 }
 

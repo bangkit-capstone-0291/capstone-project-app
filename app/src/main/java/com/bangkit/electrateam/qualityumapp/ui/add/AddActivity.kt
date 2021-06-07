@@ -21,11 +21,6 @@ class AddActivity : AppCompatActivity() {
     private var stock: StockData? = null
     private var selectedImageUri: Uri? = null
 
-    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        binding.imgAddOthers.setImageURI(uri)
-        selectedImageUri = uri
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,6 +33,11 @@ class AddActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[AddViewModel::class.java]
 
+        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            binding.imgAddOthers.setImageURI(uri)
+            selectedImageUri = uri
+        }
+
         setDropDownMenu()
         onButtonSaveClicked()
 
@@ -47,46 +47,9 @@ class AddActivity : AppCompatActivity() {
 
         binding.btnChoose.setOnClickListener {
             getContent.launch("image/*")
-
-            //Intent(Intent.ACTION_PICK).also {
-            //    it.type = "image/*"
-            //    val mimeTypes = arrayOf("image/jpeg", "image/png")
-            //    it.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-            //    startActivityForResult(it, REQUEST_CODE_PICK_IMAGE)
-            // }
-
         }
     }
 
-
-    /*val resultLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            // There are no request codes
-            val data: Intent? = result.data
-            binding.imgAddOthers.setImageURI(data)
-        }
-    }
-
-    fun openSomeActivityForResult() {
-        val intent = Intent(this, SomeActivity::class.java)
-        resultLauncher.launch(intent)
-    }*/
-
-
-
-
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                REQUEST_CODE_PICK_IMAGE -> {
-                    selectedImageUri = data?.data
-                    binding.imgAddOthers.setImageURI(selectedImageUri)
-                }
-            }
-        }
-    }
-*/
     private fun setDropDownMenu() {
         val items = listOf(
             getString(R.string.fruits),
@@ -122,7 +85,7 @@ class AddActivity : AppCompatActivity() {
                 viewModel.addStock(add)
             } else Toast.makeText(
                 this@AddActivity,
-                "Please Enter Data Correctly!",
+                getString(R.string.txt_data_not_correct),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -141,9 +104,5 @@ class AddActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
-    }
-
-    companion object {
-        const val REQUEST_CODE_PICK_IMAGE = 101
     }
 }
