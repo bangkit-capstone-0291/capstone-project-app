@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentStockBinding
@@ -17,10 +18,9 @@ class StockFragment : Fragment() {
     private lateinit var viewModel: StockViewModel
     private lateinit var stockAdapter: StockAdapter
     private var _binding: FragmentStockBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private val args by navArgs<StockFragmentArgs>()
     private val binding get() = _binding!!
+    private var category: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,15 +39,47 @@ class StockFragment : Fragment() {
 
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[StockViewModel::class.java]
-            val dataDummy = viewModel.getDummyStock()
 
+            category = args.category
 
-            viewModel.getAllStock().observe(viewLifecycleOwner, {
-                setData(it)
-                showLoading(false)
-                if (it.isEmpty()) showEmpty(true)
-                else showEmpty(false)
-            })
+            if (category != 0) {
+
+                when (category) {
+                    10 -> {
+                        viewModel.getAllCategory("Fruits").observe(viewLifecycleOwner, {
+                            setData(it)
+                            showLoading(false)
+                            if (it.isEmpty()) showEmpty(true)
+                            else showEmpty(false)
+                        })
+                    }
+
+                    20 -> {
+                        viewModel.getAllCategory("Vegetables").observe(viewLifecycleOwner, {
+                            setData(it)
+                            showLoading(false)
+                            if (it.isEmpty()) showEmpty(true)
+                            else showEmpty(false)
+                        })
+                    }
+
+                    30 -> {
+                        viewModel.getAllCategory("Others").observe(viewLifecycleOwner, {
+                            setData(it)
+                            showLoading(false)
+                            if (it.isEmpty()) showEmpty(true)
+                            else showEmpty(false)
+                        })
+                    }
+                }
+            } else {
+                viewModel.getAllStock().observe(viewLifecycleOwner, {
+                    setData(it)
+                    showLoading(false)
+                    if (it.isEmpty()) showEmpty(true)
+                    else showEmpty(false)
+                })
+            }
 
             stockAdapter = StockAdapter()
             onStockSelected()
@@ -109,5 +141,9 @@ class StockFragment : Fragment() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    companion object {
+        const val EXTRA_CATEGORY= "extra_category"
     }
 }

@@ -16,6 +16,9 @@
         <deepLink
             android:id="@+id/deepLink_smartsentra"
             app:uri="https://smartsentra.kemenperin.go.id/" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_stock"
+            app:destination="@id/navigation_stock" />
     </fragment>
 
     <fragment
@@ -29,6 +32,10 @@
         <action
             android:id="@+id/action_navigation_stock_to_addActivity"
             app:destination="@id/addActivity" />
+        <argument
+            android:name="category"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment
