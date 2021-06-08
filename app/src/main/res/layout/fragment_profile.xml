@@ -103,28 +103,37 @@
         app:layout_constraintStart_toStartOf="@id/tv_personal_information"
         app:layout_constraintTop_toBottomOf="@id/tv_personal_information" />
 
-    <TextView
-        android:id="@+id/tv_language"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/frameLayoutLanguage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/language"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/tv_setting"
-        app:layout_constraintTop_toBottomOf="@id/divider_language" />
-
-    <ImageView
-        android:id="@+id/img_language"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:src="@drawable/ic_baseline_translate_24"
-        app:layout_constraintBottom_toBottomOf="@id/tv_language"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_language"
-        app:tint="@color/black"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_language">
+
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tv_setting"
+            app:layout_constraintTop_toBottomOf="@id/divider_language" />
+
+        <ImageView
+            android:id="@+id/img_language"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_baseline_translate_24"
+            app:tint="@color/black"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
 
     <View
         android:id="@+id/divider_about"
@@ -132,9 +141,9 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="@color/divider_color"
-        app:layout_constraintEnd_toEndOf="@id/img_language"
-        app:layout_constraintStart_toStartOf="@id/tv_language"
-        app:layout_constraintTop_toBottomOf="@id/tv_language" />
+        app:layout_constraintEnd_toEndOf="@id/frameLayoutLanguage"
+        app:layout_constraintStart_toStartOf="@id/frameLayoutLanguage"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutLanguage" />
 
     <TextView
         android:id="@+id/tv_about"
