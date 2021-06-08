@@ -1,27 +1,36 @@
 package com.bangkit.electrateam.qualityumapp.ui.camera
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiResponse
 import com.bangkit.electrateam.qualityumapp.databinding.ActivityCameraPreviewBinding
 import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity
 import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity.Companion.EXTRA_IMAGE_FRUITS
+import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity.Companion.EXTRA_PREDICT_CODE
 import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity.Companion.EXTRA_PREDICT_RESULT
 import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity.Companion.EXTRA_QUALITY_RESULT
 import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
 import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.Utils.getFileName
+import com.bangkit.electrateam.qualityumapp.utils.ImageResizer
 import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback {
 
@@ -29,6 +38,7 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
     private lateinit var cameraPreviewModel: CameraPreviewModel
     private var selectedImageUri: Uri? = null
     private var predictionResult = 0
+    private lateinit var bitmap: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,11 +82,35 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
 
     private fun uploadImage() {
 
+        bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            val src: ImageDecoder.Source =
+                ImageDecoder.createSource(contentResolver, selectedImageUri!!)
+            ImageDecoder.decodeBitmap(src)
+        } else {
+            @Suppress("DEPRECATION")
+            MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
+        }
+
+        val reducedBitmap = ImageResizer.reduceBitmapSize(bitmap, 307200)
+        val bytes = ByteArrayOutputStream()
+        reducedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+
+        @Suppress("DEPRECATION") val path = MediaStore.Images.Media.insertImage(
+            baseContext.contentResolver,
+            reducedBitmap,
+            SimpleDateFormat(
+                FILENAME_FORMAT, Locale.US
+            ).format(System.currentTimeMillis()) + " Qualityum",
+            null
+        )
+
+        selectedImageUri = Uri.parse(path)
+
         val parcelFileDescriptor =
             contentResolver.openFileDescriptor(selectedImageUri!!, "r", null) ?: return
+        val file = File(cacheDir, contentResolver.getFileName(selectedImageUri!!))
 
         val inputStream = FileInputStream(parcelFileDescriptor.fileDescriptor)
-        val file = File(cacheDir, contentResolver.getFileName(selectedImageUri!!))
         val outputStream = FileOutputStream(file)
         inputStream.copyTo(outputStream)
 
@@ -145,15 +179,14 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
                     })
                 }
 
-                getClassification(file, body)
+                getClassification(file, body, 2)
 
             } else Toast.makeText(this, getString(R.string.warning_type_choose), Toast.LENGTH_SHORT)
                 .show()
-        } else getClassification(file, body)
-
+        } else getClassification(file, body, 1)
     }
 
-    private fun getClassification(file: File, body: UploadRequest) {
+    private fun getClassification(file: File, body: UploadRequest, code: Int) {
         cameraPreviewModel.getClassification(file, body).observe(this, {
             if (it != null) when (it) {
                 is ApiResponse.Success -> {
@@ -162,6 +195,7 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
                         Intent(this@CameraPreviewActivity, AddFruitsActivity::class.java)
                     nextIntent.putExtra(EXTRA_QUALITY_RESULT, it.data.result)
                     nextIntent.putExtra(EXTRA_PREDICT_RESULT, predictionResult)
+                    nextIntent.putExtra(EXTRA_PREDICT_CODE, code)
                     nextIntent.putExtra(EXTRA_IMAGE_FRUITS, selectedImageUri.toString())
                     startActivity(nextIntent)
                     finish()
@@ -191,5 +225,6 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
 
     companion object {
         const val EXTRA_IMAGE_PREVIEW = "extra_image_preview"
+        private const val FILENAME_FORMAT = "yyyy MMM dd, HH-mm-ss-SSS"
     }
 }

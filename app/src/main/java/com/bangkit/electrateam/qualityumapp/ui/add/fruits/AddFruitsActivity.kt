@@ -46,11 +46,10 @@ class AddFruitsActivity : AppCompatActivity() {
         val uriImage = intent.getStringExtra(EXTRA_IMAGE_FRUITS)
         val resultQuality = intent.getStringExtra(EXTRA_QUALITY_RESULT)
         val resultPredict = intent.getIntExtra(EXTRA_PREDICT_RESULT, 0)
+        val code = intent.getIntExtra(EXTRA_PREDICT_CODE, 0)
 
-        if (uriImage != null) {
-            if (resultQuality != null) {
-                setPredictCardValue(uriImage, resultQuality, resultPredict)
-            }
+        if (uriImage != null && resultQuality != null) {
+            setPredictCardValue(uriImage, resultQuality, resultPredict, code)
             onButtonSaveClicked(uriImage)
         }
     }
@@ -65,7 +64,7 @@ class AddFruitsActivity : AppCompatActivity() {
         (binding.menuAddCategory.editText as? AutoCompleteTextView)?.setAdapter(adapter)
     }
 
-    private fun setPredictCardValue(image: String, quality: String, predict: Int) {
+    private fun setPredictCardValue(image: String, quality: String, predict: Int, code: Int) {
         binding.tvQualityPredict.text = quality
 
         Glide.with(this)
@@ -76,14 +75,15 @@ class AddFruitsActivity : AppCompatActivity() {
 
         val expiredDate = System.currentTimeMillis() + (86400000 * predict)
 
-        if (quality == "Banana Bad" || quality == "Apple Bad" || quality == "Orange Bad") {
+        if (quality == "Banana Bad" || quality == "Orange Bad" || quality == "Apple Bad") {
             binding.tvReminderBad.visibility = View.VISIBLE
             binding.tvExpDatePredict.text = ""
         } else {
             binding.tvReminderBad.visibility = View.GONE
-            if (predict == 0) {
-                binding.tvExpDatePredict.text = ""
-            } else binding.tvExpDatePredict.text = dateFormat.format(expiredDate)
+            when (code) {
+                1 -> binding.tvExpDatePredict.text = ""
+                2 -> binding.tvExpDatePredict.text = dateFormat.format(expiredDate)
+            }
         }
     }
 
@@ -138,5 +138,6 @@ class AddFruitsActivity : AppCompatActivity() {
         const val EXTRA_IMAGE_FRUITS = "extra_image_fruits"
         const val EXTRA_QUALITY_RESULT = "extra_quality_result"
         const val EXTRA_PREDICT_RESULT = "extra_predict_result"
+        const val EXTRA_PREDICT_CODE = "extra_predict_code"
     }
 }
