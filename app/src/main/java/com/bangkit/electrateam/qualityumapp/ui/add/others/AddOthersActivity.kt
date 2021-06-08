@@ -1,5 +1,6 @@
 package com.bangkit.electrateam.qualityumapp.ui.add.others
 
+import android.app.DatePickerDialog
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,8 @@ import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.databinding.ActivityAddOthersBinding
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddOthersActivity : AppCompatActivity() {
 
@@ -20,6 +23,7 @@ class AddOthersActivity : AppCompatActivity() {
     private lateinit var othersViewModel: AddOthersViewModel
     private var stock: StockData? = null
     private var selectedImageUri: Uri? = null
+    private var dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +37,11 @@ class AddOthersActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(this)
         othersViewModel = ViewModelProvider(this, factory)[AddOthersViewModel::class.java]
 
-        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            binding.imgAddOthers.setImageURI(uri)
-            selectedImageUri = uri
-        }
+        val getContent =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+                binding.imgAddOthers.setImageURI(uri)
+                selectedImageUri = uri
+            }
 
         setDropDownMenu()
         onButtonSaveClicked()
@@ -48,6 +53,24 @@ class AddOthersActivity : AppCompatActivity() {
         binding.btnChoose.setOnClickListener {
             getContent.launch("image/*")
         }
+
+        binding.inputLayoutDate.setEndIconOnClickListener {
+            pickDate()
+        }
+    }
+
+    private fun pickDate() {
+        val exptDate = Calendar.getInstance()
+        val startYear = exptDate.get(Calendar.YEAR)
+        val startMonth = exptDate.get(Calendar.MONTH)
+        val startDay = exptDate.get(Calendar.DAY_OF_MONTH)
+
+        DatePickerDialog(this, { _, year, month, day ->
+            val selectDate = Calendar.getInstance()
+            selectDate.set(year, month, day)
+            val showDateTime = dateFormat.format(selectDate.time)
+            binding.addExpDate.setText(showDateTime)
+        }, startYear, startMonth, startDay).show()
     }
 
     private fun setDropDownMenu() {

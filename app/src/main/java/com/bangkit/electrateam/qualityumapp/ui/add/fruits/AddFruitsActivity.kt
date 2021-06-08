@@ -22,7 +22,7 @@ class AddFruitsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddFruitsBinding
     private lateinit var viewModel: AddFruitsViewModel
     private var stock: StockData? = null
-    private var dateAndTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+    private var dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +77,7 @@ class AddFruitsActivity : AppCompatActivity() {
 
         if (predict == 0) {
             binding.tvExpDatePredict.text = ""
-        } else binding.tvExpDatePredict.text = dateAndTimeFormat.format(expiredDate)
+        } else binding.tvExpDatePredict.text = dateFormat.format(expiredDate)
     }
 
     private fun onButtonSaveClicked(imageUri: String) {

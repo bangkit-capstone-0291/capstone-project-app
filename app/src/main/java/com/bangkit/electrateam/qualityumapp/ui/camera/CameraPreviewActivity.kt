@@ -36,6 +36,8 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
         binding = ActivityCameraPreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = getString(R.string.image_preview)
+
         val factory = ViewModelFactory.getInstance(this)
         cameraPreviewModel = ViewModelProvider(this, factory)[CameraPreviewModel::class.java]
 

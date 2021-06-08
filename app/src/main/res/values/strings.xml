@@ -54,4 +54,9 @@
     <string name="warning_type_choose">Please choose type first!</string>
     <string name="something_error">There\'s is something error</string>
     <string name="find_your_raw_material_stock">Find your raw material stock</string>
+    <string name="image_preview">Image Preview</string>
+    <string name="hi">Hi</string>
+    <string name="reminder_prediction_text">Please, check and choose if you want to get fruits prediction too</string>
+    <string name="get_prediction">Get Prediction</string>
+    <string name="next">Next</string>
 </resources>

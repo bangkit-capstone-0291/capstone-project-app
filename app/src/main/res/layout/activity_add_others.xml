@@ -102,10 +102,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:hint="@string/expired_date"
+            app:endIconDrawable="@drawable/ic_baseline_date_range_24"
+            app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="@id/input_layout_quantity"
             app:layout_constraintStart_toStartOf="@id/menu_add_category"
-            app:layout_constraintTop_toBottomOf="@id/menu_add_category"
-            app:startIconDrawable="@drawable/ic_baseline_date_range_24">
+            app:layout_constraintTop_toBottomOf="@id/menu_add_category">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_exp_date"
