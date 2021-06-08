@@ -137,50 +137,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_language" />
 
     <TextView
-        android:id="@+id/tv_about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/about"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_about" />
-
-    <TextView
-        android:id="@+id/tv_about_us"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/about_us"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/tv_about"
-        app:layout_constraintTop_toBottomOf="@id/tv_about" />
-
-    <ImageView
-        android:id="@+id/img_about_us"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/ic_info_icon"
-        app:layout_constraintBottom_toBottomOf="@id/tv_about_us"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_about_us"
-        app:tint="@color/black"
-        tools:ignore="ContentDescription" />
-
-    <View
-        android:id="@+id/divider_logout"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/divider_color"
-        app:layout_constraintEnd_toEndOf="@id/img_about_us"
-        app:layout_constraintStart_toStartOf="@id/tv_about_us"
-        app:layout_constraintTop_toBottomOf="@id/tv_about_us" />
-
-    <TextView
         android:id="@+id/tv_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -188,8 +144,8 @@
         android:text="@string/logout"
         android:textColor="@color/red_ikm"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/tv_about"
-        app:layout_constraintTop_toBottomOf="@id/divider_logout" />
+        app:layout_constraintStart_toStartOf="@id/tv_language"
+        app:layout_constraintTop_toBottomOf="@id/divider_about" />
 
     <ImageView
         android:id="@+id/img_logout"

@@ -64,7 +64,11 @@
         android:id="@+id/navigation_profile"
         android:name="com.bangkit.electrateam.qualityumapp.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_detailProfileActivity"
+            app:destination="@id/detailProfileActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
@@ -81,4 +85,9 @@
         android:name="com.bangkit.electrateam.qualityumapp.ui.add.others.AddOthersActivity"
         android:label="@string/add_raw_material"
         tools:layout="@layout/activity_add_others" />
+    <activity
+        android:id="@+id/detailProfileActivity"
+        android:name="com.bangkit.electrateam.qualityumapp.ui.profile.detailprofile.DetailProfileActivity"
+        android:label="activity_detail_profile"
+        tools:layout="@layout/activity_detail_profile" />
 </navigation>

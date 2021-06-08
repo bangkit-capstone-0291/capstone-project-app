@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
@@ -75,9 +76,15 @@ class AddFruitsActivity : AppCompatActivity() {
 
         val expiredDate = System.currentTimeMillis() + (86400000 * predict)
 
-        if (predict == 0) {
+        if (quality == "Banana Bad" || quality == "Apple Bad" || quality == "Orange Bad") {
+            binding.tvReminderBad.visibility = View.VISIBLE
             binding.tvExpDatePredict.text = ""
-        } else binding.tvExpDatePredict.text = dateFormat.format(expiredDate)
+        } else {
+            binding.tvReminderBad.visibility = View.GONE
+            if (predict == 0) {
+                binding.tvExpDatePredict.text = ""
+            } else binding.tvExpDatePredict.text = dateFormat.format(expiredDate)
+        }
     }
 
     private fun onButtonSaveClicked(imageUri: String) {

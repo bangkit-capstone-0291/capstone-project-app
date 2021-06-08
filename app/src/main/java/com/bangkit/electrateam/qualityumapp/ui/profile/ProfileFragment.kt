@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -28,6 +29,13 @@ class ProfileFragment : Fragment() {
 
         if (activity != null) {
 
+            binding.tvPersonalInformation.setOnClickListener {
+                val action =
+                    ProfileFragmentDirections.actionNavigationProfileToDetailProfileActivity()
+                action.let {
+                    findNavController().navigate(it)
+                }
+            }
         }
     }
 

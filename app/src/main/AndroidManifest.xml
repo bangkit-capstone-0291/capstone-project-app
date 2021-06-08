@@ -19,7 +19,8 @@
         android:theme="@style/Theme.QualityumApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.add.fruits.AddFruitsActivity"></activity>
+        <activity android:name=".ui.profile.detailprofile.DetailProfileActivity"></activity>
+        <activity android:name=".ui.add.fruits.AddFruitsActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

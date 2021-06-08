@@ -59,4 +59,10 @@
     <string name="reminder_prediction_text">Please, check and choose if you want to get fruits prediction too</string>
     <string name="get_prediction">Get Prediction</string>
     <string name="next">Next</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="detail_profile">Detail Profile</string>
+    <string name="remider_bad_fruit_text">You have bad fruit that can\'t be predicted anymore!</string>
 </resources>
