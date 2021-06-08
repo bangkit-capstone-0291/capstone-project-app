@@ -10,8 +10,20 @@ import retrofit2.http.Part
 interface ApiService {
 
     @Multipart
-    @POST("image")
-    fun uploadImage(
+    @POST("/image/fruit-classification")
+    fun getClassification(
+        @Part image: MultipartBody.Part
+    ): Call<QualityResponse>
+
+    @Multipart
+    @POST("/image/banana-prediction")
+    fun getBananaPrediction(
+        @Part image: MultipartBody.Part
+    ): Call<QualityResponse>
+
+    @Multipart
+    @POST("/image/orange-prediction")
+    fun getOrangePrediction(
         @Part image: MultipartBody.Part
     ): Call<QualityResponse>
 }

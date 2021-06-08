@@ -16,7 +16,7 @@ object ApiConfig {
             .build()
     }
 
-    fun provideApiService(): ApiService {
+    operator fun invoke(): ApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

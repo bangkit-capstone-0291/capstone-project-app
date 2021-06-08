@@ -35,10 +35,62 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:max="100"
-        app:layout_constraintBottom_toTopOf="@id/btn_predict"
+        app:layout_constraintBottom_toTopOf="@id/tv_check"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:progress="70" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Please, check and choose if you want to get fruits prediction too"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/progress_bar"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
+
+    <CheckBox
+        android:id="@+id/check_predict"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/menu_add_category"
+        app:layout_constraintStart_toStartOf="@id/tv_check"
+        app:layout_constraintTop_toTopOf="@id/menu_add_category"
+        app:useMaterialThemeColors="false" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_check_fruits"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Get Prediction"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/check_predict"
+        app:layout_constraintStart_toEndOf="@id/check_predict"
+        app:layout_constraintTop_toTopOf="@id/check_predict" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menu_add_category"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:hint="@string/category"
+        app:layout_constraintBottom_toTopOf="@id/btn_predict"
+        app:layout_constraintEnd_toEndOf="@id/progress_bar"
+        app:layout_constraintStart_toEndOf="@id/tv_check_fruits"
+        app:layout_constraintTop_toBottomOf="@id/tv_check">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoComplete_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btn_predict"
@@ -46,11 +98,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="@color/white_opt"
-        android:text="@string/prediction"
+        android:gravity="center"
+        android:text="Next"
         android:textSize="12sp"
         app:icon="@drawable/ic_next_icon"
         app:iconGravity="end"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_add_category"
+        app:strokeColor="@color/primary"
+        app:strokeWidth="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

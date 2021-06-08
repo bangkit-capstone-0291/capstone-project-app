@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiResponse
 import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiService
 import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
+import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,9 +25,51 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
             }
     }
 
-    fun getPrediction(file: File): LiveData<ApiResponse<QualityResponse>> {
+    fun getClassification(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>> {
         val resultData = MutableLiveData<ApiResponse<QualityResponse>>()
-        val client = apiService.uploadImage(MultipartBody.Part.createFormData("image", file.name))
+        val client = apiService.getClassification(MultipartBody.Part.createFormData("image", file.name, body))
+        client.enqueue(object : Callback<QualityResponse> {
+            override fun onResponse(
+                call: Call<QualityResponse>,
+                response: Response<QualityResponse>
+            ) {
+                val dataPredict = response.body()
+                resultData.value =
+                    if (dataPredict != null) ApiResponse.Success(dataPredict) else ApiResponse.Empty
+            }
+
+            override fun onFailure(call: Call<QualityResponse>, t: Throwable) {
+                resultData.value = ApiResponse.Error(t.message.toString())
+                Log.e("RemoteDataSource", t.message.toString())
+            }
+        })
+        return resultData
+    }
+
+    fun getBananaPrediction(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>> {
+        val resultData = MutableLiveData<ApiResponse<QualityResponse>>()
+        val client = apiService.getBananaPrediction(MultipartBody.Part.createFormData("image", file.name, body))
+        client.enqueue(object : Callback<QualityResponse> {
+            override fun onResponse(
+                call: Call<QualityResponse>,
+                response: Response<QualityResponse>
+            ) {
+                val dataPredict = response.body()
+                resultData.value =
+                    if (dataPredict != null) ApiResponse.Success(dataPredict) else ApiResponse.Empty
+            }
+
+            override fun onFailure(call: Call<QualityResponse>, t: Throwable) {
+                resultData.value = ApiResponse.Error(t.message.toString())
+                Log.e("RemoteDataSource", t.message.toString())
+            }
+        })
+        return resultData
+    }
+
+    fun getOrangePrediction(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>> {
+        val resultData = MutableLiveData<ApiResponse<QualityResponse>>()
+        val client = apiService.getOrangePrediction(MultipartBody.Part.createFormData("image", file.name, body))
         client.enqueue(object : Callback<QualityResponse> {
             override fun onResponse(
                 call: Call<QualityResponse>,

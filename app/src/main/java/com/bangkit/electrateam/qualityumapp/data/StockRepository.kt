@@ -7,6 +7,7 @@ import com.bangkit.electrateam.qualityumapp.data.remote.RemoteDataSource
 import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiResponse
 import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
 import com.bangkit.electrateam.qualityumapp.model.StockData
+import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
 import com.bangkit.electrateam.qualityumapp.utils.DataMapper
 import java.io.File
 
@@ -15,8 +16,22 @@ class StockRepository(
     private val remoteDataSource: RemoteDataSource
 ) : StockDataSource {
 
-    override fun getPrediction(file: File): LiveData<ApiResponse<QualityResponse>> {
-        return remoteDataSource.getPrediction(file)
+    override fun getClassification(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>> {
+        return remoteDataSource.getClassification(file, body)
+    }
+
+    override fun getBananaPrediction(
+        file: File,
+        body: UploadRequest
+    ): LiveData<ApiResponse<QualityResponse>> {
+        return remoteDataSource.getBananaPrediction(file, body)
+    }
+
+    override fun getOrangePrediction(
+        file: File,
+        body: UploadRequest
+    ): LiveData<ApiResponse<QualityResponse>> {
+        return remoteDataSource.getOrangePrediction(file, body)
     }
 
     override fun getAllStock(): LiveData<List<StockData>> {

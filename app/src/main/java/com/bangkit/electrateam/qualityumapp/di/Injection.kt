@@ -13,7 +13,7 @@ object Injection {
 
         val database = StockDatabase.getInstance(context)
 
-        val remoteDataSource = RemoteDataSource.getInstance(ApiConfig.provideApiService())
+        val remoteDataSource = RemoteDataSource.getInstance(ApiConfig.invoke())
         val localDataSource = LocalDataSource.getInstance(database.stockDao())
 
         return StockRepository.getInstance(localDataSource, remoteDataSource)
