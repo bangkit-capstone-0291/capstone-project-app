@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.electrateam.qualityumapp.data.StockRepository
 import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiResponse
+import com.bangkit.electrateam.qualityumapp.data.remote.response.PredictionResponse
 import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
 import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
 import java.io.File
@@ -12,4 +13,10 @@ class CameraPreviewModel(private val stockRepository: StockRepository) : ViewMod
 
     fun getClassification(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>> =
         stockRepository.getClassification(file, body)
+
+    fun getBananaPrediction(file: File, body: UploadRequest): LiveData<ApiResponse<PredictionResponse>> =
+        stockRepository.getBananaPrediction(file, body)
+
+    fun getOrangePrediction(file: File, body: UploadRequest): LiveData<ApiResponse<PredictionResponse>> =
+        stockRepository.getOrangePrediction(file, body)
 }

@@ -46,4 +46,11 @@
     <string name="txt_data_not_correct">Please Enter Data Correctly!</string>
     <string name="prediction_results">Prediction Results</string>
     <string name="prediction">Prediction</string>
+    <string name="type">Type</string>
+    <string name="orange_type">Orange</string>
+    <string name="banana_type">Banana</string>
+    <string name="upload_success">Upload successful</string>
+    <string name="upload_fail">Failed to upload</string>
+    <string name="warning_type_choose">Please choose type first!</string>
+    <string name="something_error">There\'s is something error</string>
 </resources>

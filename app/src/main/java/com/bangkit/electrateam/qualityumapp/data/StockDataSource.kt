@@ -2,6 +2,7 @@ package com.bangkit.electrateam.qualityumapp.data
 
 import androidx.lifecycle.LiveData
 import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiResponse
+import com.bangkit.electrateam.qualityumapp.data.remote.response.PredictionResponse
 import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
@@ -11,9 +12,15 @@ interface StockDataSource {
 
     fun getClassification(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>>
 
-    fun getBananaPrediction(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>>
+    fun getBananaPrediction(
+        file: File,
+        body: UploadRequest
+    ): LiveData<ApiResponse<PredictionResponse>>
 
-    fun getOrangePrediction(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>>
+    fun getOrangePrediction(
+        file: File,
+        body: UploadRequest
+    ): LiveData<ApiResponse<PredictionResponse>>
 
     fun getAllStock(): LiveData<List<StockData>>
 

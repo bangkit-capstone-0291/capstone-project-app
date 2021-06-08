@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.databinding.ActivityAddFruitsBinding
 import com.bumptech.glide.Glide
@@ -34,6 +33,9 @@ class AddFruitsActivity : AppCompatActivity() {
 
         val resultQuality = intent.getStringExtra(EXTRA_QUALITY_RESULT)
         binding.tvQualityPredict.text = resultQuality
+
+        val resultPredict = intent.getIntExtra(EXTRA_PREDICT_RESULT, 0)
+        binding.tvExpDatePredict.text = resultPredict.toString()
     }
 
     private fun setDropDownMenu() {
@@ -54,5 +56,6 @@ class AddFruitsActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_IMAGE_FRUITS = "extra_image_fruits"
         const val EXTRA_QUALITY_RESULT = "extra_quality_result"
+        const val EXTRA_PREDICT_RESULT = "extra_predict_result"
     }
 }
