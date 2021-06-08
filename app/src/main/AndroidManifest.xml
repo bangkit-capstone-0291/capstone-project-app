@@ -32,7 +32,9 @@
         </provider>
 
         <activity android:name=".ui.camera.CameraPreviewActivity" />
-        <activity android:name=".ui.camera.CameraActivity" />
+        <activity
+            android:name=".ui.camera.CameraActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ui.add.others.AddOthersActivity" />
         <activity android:name=".MainActivity" />
         <activity

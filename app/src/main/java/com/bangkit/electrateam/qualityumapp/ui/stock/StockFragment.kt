@@ -1,6 +1,7 @@
 package com.bangkit.electrateam.qualityumapp.ui.stock
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -84,6 +85,7 @@ class StockFragment : Fragment() {
             stockAdapter = StockAdapter()
             onStockSelected()
             onFabClicked()
+            searching()
         }
     }
 
@@ -93,6 +95,36 @@ class StockFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
             adapter = stockAdapter
+        }
+    }
+
+    private fun searching() {
+        binding.searchType.setOnKeyListener { _, keyCode, event ->
+            when {
+                ((keyCode == KeyEvent.KEYCODE_ENTER) && (event.action == KeyEvent.ACTION_DOWN)) -> {
+                    val inputText = binding.searchType.text.toString()
+
+                    if (inputText.isEmpty()) return@setOnKeyListener true
+                    showLoading(true)
+                    showEmpty(false)
+
+                    stockAdapter.getFilter().filter(inputText)
+
+                    return@setOnKeyListener true
+                }
+                else -> false
+            }
+        }
+
+        binding.searchField.setEndIconOnClickListener {
+
+            val text = binding.searchField.editText?.text.toString()
+
+            if (text.isEmpty()) return@setEndIconOnClickListener
+            showLoading(true)
+            showEmpty(false)
+
+            stockAdapter.getFilter().filter(text)
         }
     }
 
@@ -141,9 +173,5 @@ class StockFragment : Fragment() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
-    }
-
-    companion object {
-        const val EXTRA_CATEGORY= "extra_category"
     }
 }

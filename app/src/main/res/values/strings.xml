@@ -53,4 +53,5 @@
     <string name="upload_fail">Failed to upload</string>
     <string name="warning_type_choose">Please choose type first!</string>
     <string name="something_error">There\'s is something error</string>
+    <string name="find_your_raw_material_stock">Find your raw material stock</string>
 </resources>
