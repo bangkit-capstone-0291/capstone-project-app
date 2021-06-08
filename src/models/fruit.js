@@ -11,6 +11,9 @@ const fruitSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    quantity : {
+        type : Number
+    },
     description : {
         type: String
     },
@@ -26,7 +29,7 @@ const fruitSchema = new mongoose.Schema({
         type: String
     },
     agePrediction : {
-        type: Number
+        type: String
     }
 
 }, {
