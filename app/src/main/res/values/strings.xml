@@ -53,4 +53,16 @@
     <string name="upload_fail">Failed to upload</string>
     <string name="warning_type_choose">Please choose type first!</string>
     <string name="something_error">There\'s is something error</string>
+    <string name="find_your_raw_material_stock">Find your raw material stock</string>
+    <string name="image_preview">Image Preview</string>
+    <string name="hi">Hi</string>
+    <string name="reminder_prediction_text">Please, check and choose if you want to get fruits prediction too</string>
+    <string name="get_prediction">Get Prediction</string>
+    <string name="next">Next</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="detail_profile">Detail Profile</string>
+    <string name="remider_bad_fruit_text">You have bad fruit that can\'t be predicted anymore!</string>
 </resources>

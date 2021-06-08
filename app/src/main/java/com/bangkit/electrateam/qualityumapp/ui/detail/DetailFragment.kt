@@ -39,8 +39,11 @@ class DetailFragment : Fragment() {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
+            showLoading(true)
+
             viewModel.setSelectedStock(args.id)
             viewModel.detailStock.observe(viewLifecycleOwner, {
+                showLoading(false)
                 populateData(it)
                 setFavouriteState(it.isFavorite)
                 onFavButtonClicked(it)
@@ -85,6 +88,14 @@ class DetailFragment : Fragment() {
         when (state) {
             true -> binding.btnFavStock.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
             false -> binding.btnFavStock.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
+        }
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
     }
 

@@ -16,6 +16,9 @@
         <deepLink
             android:id="@+id/deepLink_smartsentra"
             app:uri="https://smartsentra.kemenperin.go.id/" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_stock"
+            app:destination="@id/navigation_stock" />
     </fragment>
 
     <fragment
@@ -29,6 +32,10 @@
         <action
             android:id="@+id/action_navigation_stock_to_addActivity"
             app:destination="@id/addActivity" />
+        <argument
+            android:name="category"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment
@@ -57,7 +64,11 @@
         android:id="@+id/navigation_profile"
         android:name="com.bangkit.electrateam.qualityumapp.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_detailProfileActivity"
+            app:destination="@id/detailProfileActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
@@ -74,4 +85,9 @@
         android:name="com.bangkit.electrateam.qualityumapp.ui.add.others.AddOthersActivity"
         android:label="@string/add_raw_material"
         tools:layout="@layout/activity_add_others" />
+    <activity
+        android:id="@+id/detailProfileActivity"
+        android:name="com.bangkit.electrateam.qualityumapp.ui.profile.detailprofile.DetailProfileActivity"
+        android:label="activity_detail_profile"
+        tools:layout="@layout/activity_detail_profile" />
 </navigation>

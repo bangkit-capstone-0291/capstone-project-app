@@ -1,12 +1,14 @@
 package com.bangkit.electrateam.qualityumapp.ui.stock
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentStockBinding
@@ -17,10 +19,9 @@ class StockFragment : Fragment() {
     private lateinit var viewModel: StockViewModel
     private lateinit var stockAdapter: StockAdapter
     private var _binding: FragmentStockBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private val args by navArgs<StockFragmentArgs>()
     private val binding get() = _binding!!
+    private var category: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,19 +40,52 @@ class StockFragment : Fragment() {
 
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[StockViewModel::class.java]
-            val dataDummy = viewModel.getDummyStock()
 
+            category = args.category
 
-            viewModel.getAllStock().observe(viewLifecycleOwner, {
-                setData(it)
-                showLoading(false)
-                if (it.isEmpty()) showEmpty(true)
-                else showEmpty(false)
-            })
+            if (category != 0) {
+
+                when (category) {
+                    10 -> {
+                        viewModel.getAllCategory("Fruits").observe(viewLifecycleOwner, {
+                            setData(it)
+                            showLoading(false)
+                            if (it.isEmpty()) showEmpty(true)
+                            else showEmpty(false)
+                        })
+                    }
+
+                    20 -> {
+                        viewModel.getAllCategory("Vegetables").observe(viewLifecycleOwner, {
+                            setData(it)
+                            showLoading(false)
+                            if (it.isEmpty()) showEmpty(true)
+                            else showEmpty(false)
+                        })
+                    }
+
+                    30 -> {
+                        viewModel.getAllCategory("Others").observe(viewLifecycleOwner, {
+                            setData(it)
+                            showLoading(false)
+                            if (it.isEmpty()) showEmpty(true)
+                            else showEmpty(false)
+                        })
+                    }
+                }
+            } else {
+                viewModel.getAllStock().observe(viewLifecycleOwner, {
+                    setData(it)
+                    showLoading(false)
+                    if (it.isEmpty()) showEmpty(true)
+                    else showEmpty(false)
+                })
+            }
 
             stockAdapter = StockAdapter()
             onStockSelected()
             onFabClicked()
+            searching()
         }
     }
 
@@ -61,6 +95,36 @@ class StockFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
             adapter = stockAdapter
+        }
+    }
+
+    private fun searching() {
+        binding.searchType.setOnKeyListener { _, keyCode, event ->
+            when {
+                ((keyCode == KeyEvent.KEYCODE_ENTER) && (event.action == KeyEvent.ACTION_DOWN)) -> {
+                    val inputText = binding.searchType.text.toString()
+
+                    if (inputText.isEmpty()) return@setOnKeyListener true
+                    showLoading(true)
+                    showEmpty(false)
+
+                    stockAdapter.getFilter().filter(inputText)
+
+                    return@setOnKeyListener true
+                }
+                else -> false
+            }
+        }
+
+        binding.searchField.setEndIconOnClickListener {
+
+            val text = binding.searchField.editText?.text.toString()
+
+            if (text.isEmpty()) return@setEndIconOnClickListener
+            showLoading(true)
+            showEmpty(false)
+
+            stockAdapter.getFilter().filter(text)
         }
     }
 

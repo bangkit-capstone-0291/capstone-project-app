@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentHomeBinding
 import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 
@@ -46,6 +47,27 @@ class HomeFragment : Fragment() {
                 val urlIntent = Intent(Intent.ACTION_VIEW)
                 urlIntent.data = Uri.parse(SMART_SENTRA_URL)
                 requireActivity().startActivity(urlIntent)
+            }
+
+            binding.cvCategoryFruit.setOnClickListener {
+                val action = HomeFragmentDirections.actionNavigationHomeToNavigationStock(10)
+                action.let {
+                    findNavController().navigate(it)
+                }
+            }
+
+            binding.cvCategoryVegetable.setOnClickListener {
+                val action = HomeFragmentDirections.actionNavigationHomeToNavigationStock(20)
+                action.let {
+                    findNavController().navigate(it)
+                }
+            }
+
+            binding.cvCategoryOther.setOnClickListener {
+                val action = HomeFragmentDirections.actionNavigationHomeToNavigationStock(30)
+                action.let {
+                    findNavController().navigate(it)
+                }
             }
         }
     }

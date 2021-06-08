@@ -1,5 +1,6 @@
 package com.bangkit.electrateam.qualityumapp.data.local.entity
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -7,6 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "stock_entities")
 data class StockEntity(
     @PrimaryKey(autoGenerate = true)
+    @NonNull
     @ColumnInfo(name = "id")
     var id: Int? = null,
 

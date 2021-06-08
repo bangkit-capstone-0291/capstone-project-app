@@ -19,7 +19,8 @@
         android:theme="@style/Theme.QualityumApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.add.fruits.AddFruitsActivity"></activity>
+        <activity android:name=".ui.profile.detailprofile.DetailProfileActivity"></activity>
+        <activity android:name=".ui.add.fruits.AddFruitsActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -32,7 +33,9 @@
         </provider>
 
         <activity android:name=".ui.camera.CameraPreviewActivity" />
-        <activity android:name=".ui.camera.CameraActivity" />
+        <activity
+            android:name=".ui.camera.CameraActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ui.add.others.AddOthersActivity" />
         <activity android:name=".MainActivity" />
         <activity

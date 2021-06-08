@@ -68,6 +68,7 @@ class CameraActivity : AppCompatActivity() {
         binding.btnCloseCamera.setOnClickListener {
             val backIntent = Intent(this@CameraActivity, MainActivity::class.java)
             startActivity(backIntent)
+            finish()
         }
 
         binding.btnOpenGallery.setOnClickListener {
