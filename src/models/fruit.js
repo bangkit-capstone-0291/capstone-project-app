@@ -11,6 +11,9 @@ const fruitSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    description : {
+        type: String
+    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -19,10 +22,10 @@ const fruitSchema = new mongoose.Schema({
     image: {
         type: String
     },
-    predictionResult : {
+    fruitClassificationPrediction : {
         type: String
     },
-    orangePrediction : {
+    agePrediction : {
         type: Number
     }
 

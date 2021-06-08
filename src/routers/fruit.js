@@ -226,7 +226,7 @@ router.get('/food/:id/fruit-classification', auth, async (req, res) => {
                 }
                 
             
-                fruit.predictionResult = result
+                fruit.fruitClassificationPrediction = result
                 await fruit.save()
 
                 res.status(200).send({result: result})
@@ -298,7 +298,82 @@ router.get('/food/:id/orange-prediction', auth, async (req, res) => {
                         result = 7
                         break
                 }
-                fruit.orangePrediction = result
+                fruit.agePrediction = result
+                await fruit.save()
+
+                res.status(200).send({result: result})
+            })
+
+
+        })        
+
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.get('/food/:id/banana-prediction', auth, async (req, res) => {
+    const _id = req.params.id
+
+    try {
+        const fruit = await Fruit.findOne({_id, owner: req.user._id})
+
+        if (!fruit) {
+            return res.status(404).send()
+        }
+        if ( fruit.name !== "banana") {
+            return res.status(400).send({"message" : "Food is not banana"})
+        }
+        if (!fruit.image) {
+            return res.status(400).send({"message" : "Food does not have image"})
+        }
+
+
+        https.get(fruit.image, async (res_) => {
+            let data = new Stream();
+            
+            res_.on("data", async (chunk) => data.push(chunk) )
+
+            res_.on('end', async () => {
+                const model = await tf.loadLayersModel('file://mlModel/banana-prediction/model.json')
+                var tensor = tfnode.node.decodeImage(data.read(), 3)
+                tensor = tf.image.resizeBilinear(tensor, [100,100])
+                var tensor_4d = tf.tensor4d(tensor.dataSync(), [1,100,100,3])
+                tensor_4d = tensor_4d.div(tf.scalar(255))
+    
+                const prediction = model.predict(tensor_4d)
+    
+                const arrPrediction = await prediction.dataSync()
+                var indexMax = -1
+                var valueMax = 0
+                var index = 0
+
+                arrPrediction.forEach((element) => {
+                    if (element>valueMax) {
+                        indexMax = index
+                        valueMax = element
+                    }
+                    index += 1
+                })
+                var result
+                switch (indexMax) {
+                    case 0:
+                        result = 4
+                        break
+                    case 1:
+                        result = 6
+                        break
+                    case 2:
+                        result = 10
+                        break
+                    case 3:
+                        result = 2
+                        break
+                    case 4:
+                        result = 8
+                        break
+                }
+                fruit.agePrediction = result
                 await fruit.save()
 
                 res.status(200).send({result: result})

@@ -18,7 +18,7 @@ const upload = multer({
 })
 
 
-router.post('/image', upload.single("image"), async (req, res) => {
+router.post('/image/fruit-classification', upload.single("image"), async (req, res) => {
     const model = await tf.loadLayersModel('file://mlModel/fruit-classification/model.json')
     var tensor = tfnode.node.decodeImage(req.file.buffer, 3)
     tensor = tf.image.resizeBilinear(tensor, [100,100])
@@ -59,6 +59,94 @@ router.post('/image', upload.single("image"), async (req, res) => {
             break
         case 5:
             result = "Orange Good"
+    }
+
+    res.send({result : result})
+
+}, (error, req, res, next) => {
+    res.status(400).send({error: error.message})
+})
+
+router.post('/image/orange-prediction', upload.single("image"), async (req, res) => {
+    const model = await tf.loadLayersModel('file://mlModel/orange-prediction/model.json')
+    var tensor = tfnode.node.decodeImage(req.file.buffer, 3)
+    tensor = tf.image.resizeBilinear(tensor, [100,100])
+    var tensor_4d = tf.tensor4d(tensor.dataSync(), [1,100,100,3])
+    tensor_4d = tensor_4d.div(tf.scalar(255))
+
+    const prediction = model.predict(tensor_4d)
+
+    const arrPrediction = await prediction.dataSync()
+    var indexMax = -1
+    var valueMax = 0
+    var index = 0
+    
+    arrPrediction.forEach((element) => {
+        if (element>valueMax) {
+            indexMax = index
+            valueMax = element
+        }
+        index += 1
+    })
+
+    var result
+    switch (indexMax) {
+        case 0:
+            result = 1
+            break
+        case 1:
+            result = 12
+            break
+        case 2:
+            result = 3
+            break
+        case 3:
+            result = 7
+            break
+    }
+
+    res.send({result : result})
+
+}, (error, req, res, next) => {
+    res.status(400).send({error: error.message})
+})
+
+router.post('/image/banana-prediction', upload.single("image"), async (req, res) => {
+    const model = await tf.loadLayersModel('file://mlModel/banana-prediction/model.json')
+    var tensor = tfnode.node.decodeImage(req.file.buffer, 3)
+    tensor = tf.image.resizeBilinear(tensor, [100,100])
+    var tensor_4d = tf.tensor4d(tensor.dataSync(), [1,100,100,3])
+    tensor_4d = tensor_4d.div(tf.scalar(255))
+
+    const prediction = model.predict(tensor_4d)
+
+    const arrPrediction = await prediction.dataSync()
+    var indexMax = -1
+    var valueMax = 0
+    var index = 0
+    
+    arrPrediction.forEach((element) => {
+        if (element>valueMax) {
+            indexMax = index
+            valueMax = element
+        }
+        index += 1
+    })
+
+    var result
+    switch (indexMax) {
+        case 0:
+            result = 1
+            break
+        case 1:
+            result = 12
+            break
+        case 2:
+            result = 3
+            break
+        case 3:
+            result = 7
+            break
     }
 
     res.send({result : result})
