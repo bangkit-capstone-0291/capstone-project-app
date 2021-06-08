@@ -44,4 +44,6 @@
     <string name="no_favorites_yet">No Favorites yet</string>
     <string name="choose_image">Choose Image</string>
     <string name="txt_data_not_correct">Please Enter Data Correctly!</string>
+    <string name="prediction_results">Prediction Results</string>
+    <string name="prediction">Prediction</string>
 </resources>

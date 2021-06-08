@@ -1,7 +1,7 @@
 package com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage
 
+import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,7 +10,24 @@ import retrofit2.http.POST
 import retrofit2.http.Part
 
 interface API {
+
     @Multipart
+    @POST("image")
+    fun uploadImage(
+        @Part image: MultipartBody.Part
+    ): Call<QualityResponse>
+
+    companion object {
+
+        operator fun invoke(): API {
+            return Retrofit.Builder()
+                .baseUrl("https://apt-index-313812.et.r.appspot.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(API::class.java)
+        }
+    }
+    /*@Multipart
     @POST("/image")
     fun uploadImage(
         @Part image: MultipartBody.Part,
@@ -25,5 +42,5 @@ interface API {
                 .build()
                 .create(API::class.java)
         }
-    }
+    }*/
 }

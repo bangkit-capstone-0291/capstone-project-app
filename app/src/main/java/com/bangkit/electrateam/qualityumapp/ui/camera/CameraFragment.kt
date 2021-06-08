@@ -14,22 +14,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentCameraBinding
-import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.API
-import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.ResponseFromUpload
 import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
-import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.Utils.getFileName
-import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.Utils.snackbar
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
 
 
 @Suppress("DEPRECATION")
@@ -40,7 +26,7 @@ class CameraFragment : Fragment(),  UploadRequest.UploadCallback{
         const val EXTRA_IMG = 101
     }
 
-    private lateinit var viewModel: CameraViewModel
+    private lateinit var previewModel: CameraPreviewModel
     private var _binding: FragmentCameraBinding? = null
     private val binding get() = _binding!!
     private var selectedImageUri: Uri? = null
@@ -49,7 +35,7 @@ class CameraFragment : Fragment(),  UploadRequest.UploadCallback{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(CameraViewModel::class.java)
+        previewModel = ViewModelProvider(this).get(CameraPreviewModel::class.java)
         _binding = FragmentCameraBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -120,7 +106,7 @@ class CameraFragment : Fragment(),  UploadRequest.UploadCallback{
 
     private fun uploadImage() {
 
-        val parcelFileDescriptor =
+        /*val parcelFileDescriptor =
             context?.contentResolver?.openFileDescriptor(selectedImageUri!!, "r", null) ?: return
 
         val inputStream = FileInputStream(parcelFileDescriptor.fileDescriptor)
@@ -152,7 +138,7 @@ class CameraFragment : Fragment(),  UploadRequest.UploadCallback{
                     binding.progressBar.progress = 100
                 }
             }
-        })
+        })*/
     }
 
     override fun onProgressUpdate(percentage: Int) {

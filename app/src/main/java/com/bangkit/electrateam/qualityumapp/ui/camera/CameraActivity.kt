@@ -40,11 +40,12 @@ class CameraActivity : AppCompatActivity() {
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            val nextIntent = Intent(this@CameraActivity, CameraPreviewActivity::class.java)
-            nextIntent.putExtra(CameraPreviewActivity.EXTRA_IMAGE_CAPTURE, uri.toString())
-            startActivity(nextIntent)
-        }
+        val getContent =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+                val nextIntent = Intent(this@CameraActivity, CameraPreviewActivity::class.java)
+                nextIntent.putExtra(CameraPreviewActivity.EXTRA_IMAGE_PREVIEW, uri.toString())
+                startActivity(nextIntent)
+            }
 
         if (allPermissionsGranted()) {
             startCamera()
@@ -153,15 +154,22 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
                     val nextIntent = Intent(this@CameraActivity, CameraPreviewActivity::class.java)
-                    nextIntent.putExtra(CameraPreviewActivity.EXTRA_IMAGE_CAPTURE, savedUri.toString())
+                    nextIntent.putExtra(
+                        CameraPreviewActivity.EXTRA_IMAGE_PREVIEW,
+                        savedUri.toString()
+                    )
                     startActivity(nextIntent)
                 }
 
                 override fun onError(exception: ImageCaptureException) {
                     Log.e(TAG, "Photo capture failed: ${exception.message}", exception)
+                    Toast.makeText(
+                        baseContext,
+                        "Photo capture failed: ${exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         )

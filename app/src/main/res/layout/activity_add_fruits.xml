@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/img_add_others"
+                android:id="@+id/img_add_fruits"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/image_load"
@@ -49,7 +49,8 @@
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="textCapSentences"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,7 +68,8 @@
                 android:id="@+id/autoComplete_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +91,8 @@
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -121,6 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="@color/soft_green"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
             app:layout_constraintEnd_toEndOf="@id/input_layout_description"
             app:layout_constraintStart_toStartOf="@id/input_layout_description"
             app:layout_constraintTop_toBottomOf="@id/input_layout_description">
@@ -134,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="Prediction Results"
+                    android:text="@string/prediction_results"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -189,14 +194,15 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
-
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/add_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/save"
             app:icon="@drawable/ic_baseline_save_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cv_prediction" />

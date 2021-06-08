@@ -1,9 +1,14 @@
 package com.bangkit.electrateam.qualityumapp.data
 
 import androidx.lifecycle.LiveData
+import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiResponse
+import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
 import com.bangkit.electrateam.qualityumapp.model.StockData
+import java.io.File
 
 interface StockDataSource {
+
+    fun getPrediction(file: File): LiveData<ApiResponse<QualityResponse>>
 
     fun getAllStock(): LiveData<List<StockData>>
 

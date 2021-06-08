@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.electrateam.qualityumapp.data.StockRepository
 import com.bangkit.electrateam.qualityumapp.di.Injection
 import com.bangkit.electrateam.qualityumapp.ui.add.others.AddOthersViewModel
+import com.bangkit.electrateam.qualityumapp.ui.camera.CameraPreviewModel
 import com.bangkit.electrateam.qualityumapp.ui.detail.DetailViewModel
 import com.bangkit.electrateam.qualityumapp.ui.favorite.FavoriteViewModel
 import com.bangkit.electrateam.qualityumapp.ui.home.HomeViewModel
@@ -19,6 +20,10 @@ class ViewModelFactory private constructor(private val repository: StockReposito
         return when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(CameraPreviewModel::class.java) -> {
+                CameraPreviewModel(repository) as T
             }
 
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {

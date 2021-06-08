@@ -11,7 +11,7 @@ interface ApiService {
 
     @Multipart
     @POST("image")
-    suspend fun uploadImage(
+    fun uploadImage(
         @Part image: MultipartBody.Part
     ): Call<QualityResponse>
 }
