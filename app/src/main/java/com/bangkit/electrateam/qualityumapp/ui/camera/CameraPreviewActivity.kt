@@ -162,6 +162,7 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
                     nextIntent.putExtra(EXTRA_PREDICT_RESULT, predictionResult)
                     nextIntent.putExtra(EXTRA_IMAGE_FRUITS, selectedImageUri.toString())
                     startActivity(nextIntent)
+                    finish()
                 }
 
                 is ApiResponse.Error -> {
