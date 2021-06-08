@@ -5,6 +5,7 @@ import androidx.lifecycle.Transformations
 import com.bangkit.electrateam.qualityumapp.data.local.LocalDataSource
 import com.bangkit.electrateam.qualityumapp.data.remote.RemoteDataSource
 import com.bangkit.electrateam.qualityumapp.data.remote.network.ApiResponse
+import com.bangkit.electrateam.qualityumapp.data.remote.response.PredictionResponse
 import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
 import com.bangkit.electrateam.qualityumapp.model.StockData
 import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
@@ -16,21 +17,24 @@ class StockRepository(
     private val remoteDataSource: RemoteDataSource
 ) : StockDataSource {
 
-    override fun getClassification(file: File, body: UploadRequest): LiveData<ApiResponse<QualityResponse>> {
+    override fun getClassification(
+        file: File,
+        body: UploadRequest
+    ): LiveData<ApiResponse<QualityResponse>> {
         return remoteDataSource.getClassification(file, body)
     }
 
     override fun getBananaPrediction(
         file: File,
         body: UploadRequest
-    ): LiveData<ApiResponse<QualityResponse>> {
+    ): LiveData<ApiResponse<PredictionResponse>> {
         return remoteDataSource.getBananaPrediction(file, body)
     }
 
     override fun getOrangePrediction(
         file: File,
         body: UploadRequest
-    ): LiveData<ApiResponse<QualityResponse>> {
+    ): LiveData<ApiResponse<PredictionResponse>> {
         return remoteDataSource.getOrangePrediction(file, body)
     }
 

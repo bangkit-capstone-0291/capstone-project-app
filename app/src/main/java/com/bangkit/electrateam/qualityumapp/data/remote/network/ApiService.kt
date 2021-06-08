@@ -1,5 +1,6 @@
 package com.bangkit.electrateam.qualityumapp.data.remote.network
 
+import com.bangkit.electrateam.qualityumapp.data.remote.response.PredictionResponse
 import com.bangkit.electrateam.qualityumapp.data.remote.response.QualityResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -19,11 +20,11 @@ interface ApiService {
     @POST("/image/banana-prediction")
     fun getBananaPrediction(
         @Part image: MultipartBody.Part
-    ): Call<QualityResponse>
+    ): Call<PredictionResponse>
 
     @Multipart
     @POST("/image/orange-prediction")
     fun getOrangePrediction(
         @Part image: MultipartBody.Part
-    ): Call<QualityResponse>
+    ): Call<PredictionResponse>
 }
