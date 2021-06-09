@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.electrateam.qualityumapp.data.StockRepository
 import com.bangkit.electrateam.qualityumapp.model.StockData
-import com.bangkit.electrateam.qualityumapp.utils.DataDummy
 
 class StockViewModel(private val stockRepository: StockRepository) : ViewModel() {
 
@@ -12,6 +11,4 @@ class StockViewModel(private val stockRepository: StockRepository) : ViewModel()
 
     fun getAllCategory(category: String): LiveData<List<StockData>> =
         stockRepository.getAllCategory(category)
-
-    fun getDummyStock(): List<StockData> = DataDummy.generateDummyStock()
 }

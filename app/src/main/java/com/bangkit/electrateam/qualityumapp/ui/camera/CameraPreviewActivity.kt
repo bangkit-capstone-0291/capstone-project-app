@@ -36,9 +36,9 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
 
     private lateinit var binding: ActivityCameraPreviewBinding
     private lateinit var cameraPreviewModel: CameraPreviewModel
+    private lateinit var bitmap: Bitmap
     private var selectedImageUri: Uri? = null
     private var predictionResult = 0
-    private lateinit var bitmap: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

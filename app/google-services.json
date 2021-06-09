@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1082931577438",
+    "firebase_url": "https://qualityum-12b7c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "qualityum-12b7c",
+    "storage_bucket": "qualityum-12b7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082931577438:android:876c725dd1b99cf5446acf",
+        "android_client_info": {
+          "package_name": "com.bangkit.electrateam.qualityumapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082931577438-aksd8r57i7ft6kqk1i7s46su0ku63e2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6qca4iRV1D15vurxBYTuEVLLULNoRxN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082931577438-aksd8r57i7ft6kqk1i7s46su0ku63e2o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
