@@ -8,9 +8,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="45dp"
         android:src="@drawable/user"
         app:civ_border_color="@color/black"
         app:civ_border_width="1dp"
@@ -18,95 +18,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_profile_name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <TextView
+        android:id="@+id/profile_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:hint="@string/full_name"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:importantForAutofill="no"
+        android:textColor="@color/black"
+        android:maxLines="1"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_profile">
+        app:layout_constraintTop_toBottomOf="@+id/img_profile" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/profile_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="textCapSentences"
-            android:maxLines="1"
-            android:textSize="12sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_profile_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/email"
-        app:layout_constraintEnd_toEndOf="@id/layout_profile_name"
-        app:layout_constraintStart_toStartOf="@id/layout_profile_name"
-        app:layout_constraintTop_toBottomOf="@id/layout_profile_name">
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:importantForAutofill="no"
+        android:maxLines="1"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/profile_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="textCapSentences"
-            android:maxLines="1"
-            android:textSize="12sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_profile_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/profile_phone"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/password"
-        app:endIconDrawable="@drawable/ic_visibility_off_black_24dp"
-        app:endIconMode="custom"
-        app:layout_constraintEnd_toEndOf="@id/layout_profile_name"
-        app:layout_constraintStart_toStartOf="@id/layout_profile_name"
-        app:layout_constraintTop_toBottomOf="@id/layout_profile_email">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/profile_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:textSize="12sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_profile_phone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/phone"
-        app:layout_constraintEnd_toEndOf="@id/layout_profile_name"
-        app:layout_constraintStart_toStartOf="@id/layout_profile_name"
-        app:layout_constraintTop_toBottomOf="@id/layout_profile_password">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/profile_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:importantForAutofill="no"
-            android:inputType="textCapSentences"
-            android:maxLines="1"
-            android:textSize="12sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:importantForAutofill="no"
+        android:text = "@string/phone"
+        android:maxLines="1"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
 </androidx.constraintlayout.widget.ConstraintLayout>
