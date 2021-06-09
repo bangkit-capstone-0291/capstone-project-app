@@ -207,12 +207,22 @@
             app:layout_constraintStart_toStartOf="@id/cv_prediction"
             app:layout_constraintTop_toBottomOf="@id/cv_prediction" />
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/btn_reminder"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="@string/notify_expired_time"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/cv_prediction"
+            app:layout_constraintStart_toStartOf="@id/cv_prediction"
+            app:layout_constraintTop_toBottomOf="@id/tv_reminder_bad" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/add_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
             android:backgroundTint="@color/primary"
@@ -225,7 +235,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_reminder_bad" />
+            app:layout_constraintTop_toBottomOf="@id/btn_reminder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

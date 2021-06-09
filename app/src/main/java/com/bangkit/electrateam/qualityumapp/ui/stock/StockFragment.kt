@@ -105,7 +105,6 @@ class StockFragment : Fragment() {
                     val inputText = binding.searchType.text.toString()
 
                     if (inputText.isEmpty()) return@setOnKeyListener true
-                    showLoading(true)
                     showEmpty(false)
 
                     stockAdapter.getFilter().filter(inputText)
@@ -121,7 +120,6 @@ class StockFragment : Fragment() {
             val text = binding.searchField.editText?.text.toString()
 
             if (text.isEmpty()) return@setEndIconOnClickListener
-            showLoading(true)
             showEmpty(false)
 
             stockAdapter.getFilter().filter(text)

@@ -1,10 +1,10 @@
 package com.bangkit.electrateam.qualityumapp.ui.add.others
 
 import android.app.DatePickerDialog
+import android.content.ContentValues
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
@@ -13,22 +13,26 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.databinding.ActivityAddOthersBinding
 import com.bangkit.electrateam.qualityumapp.model.StockData
+import com.bangkit.electrateam.qualityumapp.receiver.AlarmReceiver
 import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddOthersActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAddOthersBinding
     private lateinit var othersViewModel: AddOthersViewModel
+    private lateinit var alarmReceiver: AlarmReceiver
+    private var _binding: ActivityAddOthersBinding? = null
+    private val binding get() = _binding!!
     private var stock: StockData? = null
     private var selectedImageUri: Uri? = null
     private var dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+    private var initialValue = ContentValues()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityAddOthersBinding.inflate(layoutInflater)
+        _binding = ActivityAddOthersBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -36,6 +40,8 @@ class AddOthersActivity : AppCompatActivity() {
 
         val factory = ViewModelFactory.getInstance(this)
         othersViewModel = ViewModelProvider(this, factory)[AddOthersViewModel::class.java]
+
+        alarmReceiver = AlarmReceiver()
 
         val getContent =
             registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -69,6 +75,7 @@ class AddOthersActivity : AppCompatActivity() {
             val selectDate = Calendar.getInstance()
             selectDate.set(year, month, day)
             val showDateTime = dateFormat.format(selectDate.time)
+            initialValue.put("exp_date", selectDate.timeInMillis)
             binding.addExpDate.setText(showDateTime)
         }, startYear, startMonth, startDay).show()
     }
@@ -92,7 +99,6 @@ class AddOthersActivity : AppCompatActivity() {
             val quantity = binding.addQuantity.text.toString().toInt()
             val expDate = binding.addExpDate.text.toString()
             val desc = binding.addDescription.text.toString()
-            Log.e("ADD", selectedImageUri.toString())
             if (name != "" && quantity != 0) {
                 val add = StockData(
                     id = id,
@@ -111,6 +117,17 @@ class AddOthersActivity : AppCompatActivity() {
                 getString(R.string.txt_data_not_correct),
                 Toast.LENGTH_SHORT
             ).show()
+
+            // set alarm
+            val expiredD = initialValue.get("exp_date")
+
+            binding.btnReminder.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    alarmReceiver.setReminder(this, expiredD as Long, name)
+                } else {
+                    alarmReceiver.cancelReminder(this)
+                }
+            }
         }
     }
 
@@ -122,6 +139,11 @@ class AddOthersActivity : AppCompatActivity() {
             }
             false -> Toast.makeText(this, getString(R.string.add_failed), Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     override fun onSupportNavigateUp(): Boolean {

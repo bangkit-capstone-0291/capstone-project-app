@@ -157,6 +157,17 @@
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/btn_reminder"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/notify_expired_time"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/input_layout_description"
+            app:layout_constraintStart_toStartOf="@id/input_layout_description"
+            app:layout_constraintTop_toBottomOf="@id/input_layout_description" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/add_button"
             android:layout_width="0dp"
@@ -175,7 +186,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_layout_description" />
+            app:layout_constraintTop_toBottomOf="@id/btn_reminder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

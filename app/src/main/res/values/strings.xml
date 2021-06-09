@@ -65,4 +65,7 @@
     <string name="phone">Phone</string>
     <string name="detail_profile">Detail Profile</string>
     <string name="remider_bad_fruit_text">You have bad fruit that can\'t be predicted anymore!</string>
+    <string name="cancel_reminder">Reminder has been disabled</string>
+    <string name="setup_reminder">Reminder has been activated</string>
+    <string name="notify_expired_time">Notify me one day before expired</string>
 </resources>
