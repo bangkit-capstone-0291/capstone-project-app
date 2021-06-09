@@ -80,6 +80,7 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
         (binding.menuAddCategory.editText as? AutoCompleteTextView)?.setAdapter(adapter)
     }
 
+    @Suppress("DEPRECATION")
     private fun uploadImage() {
 
         bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -87,7 +88,6 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
                 ImageDecoder.createSource(contentResolver, selectedImageUri!!)
             ImageDecoder.decodeBitmap(src)
         } else {
-            @Suppress("DEPRECATION")
             MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
         }
 
@@ -95,7 +95,7 @@ class CameraPreviewActivity : AppCompatActivity(), UploadRequest.UploadCallback 
         val bytes = ByteArrayOutputStream()
         reducedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
 
-        @Suppress("DEPRECATION") val path = MediaStore.Images.Media.insertImage(
+        val path = MediaStore.Images.Media.insertImage(
             baseContext.contentResolver,
             reducedBitmap,
             SimpleDateFormat(

@@ -22,8 +22,6 @@
     <string name="settings">PENGATURAN</string>
     <string name="personal_information">Informasi Pribadi</string>
     <string name="language">Bahasa</string>
-    <string name="about">TENTANG</string>
-    <string name="about_us">Tentang Kami</string>
     <string name="logout">Keluar</string>
     <string name="best_before">Baik sebelum</string>
     <string name="date_example">07 Juni, 2021</string>
@@ -46,11 +44,9 @@
     <string name="choose_image">Pilih Foto/Gambar</string>
     <string name="txt_data_not_correct">Silakan Masukkan Data dengan Benar!</string>
     <string name="prediction_results">Hasil Prediksi</string>
-    <string name="prediction">Prediksi</string>
     <string name="type">Tipe</string>
     <string name="orange_type">Jeruk</string>
     <string name="banana_type">Pisang</string>
-    <string name="upload_success">Unggah Berhasil</string>
     <string name="upload_fail">Gagal Mengunggah</string>
     <string name="warning_type_choose">Silakan pilih jenis tipe terlebih dahulu!</string>
     <string name="something_error">Ada Sesuatu Yang Error</string>
@@ -75,7 +71,6 @@
     <string name="reminder_prediction_text">Silakan, cek dan pilih jika Anda ingin mendapatkan prediksi buah</string>
     <string name="get_prediction">Dapatkan Prediksi</string>
     <string name="next">Lanjut</string>
-    <string name="full_name">Nama lengkap</string>
     <string name="phone">Telepon</string>
     <string name="detail_profile">Profil Detail</string>
     <string name="remider_bad_fruit_text">Anda memiliki buah buruk yang tidak dapat diprediksi lagi!</string>

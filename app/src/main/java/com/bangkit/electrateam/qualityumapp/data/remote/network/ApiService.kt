@@ -26,6 +26,7 @@ interface ApiService {
         @Part image: MultipartBody.Part
     ): Call<PredictionResponse>
 
+    // Not yet implemented
     /*@Multipart
     @POST("/food")
     fun postNewStock(

@@ -21,8 +21,6 @@
     <string name="settings">SETTINGS</string>
     <string name="personal_information">Personal Information</string>
     <string name="language">Language</string>
-    <string name="about">ABOUT</string>
-    <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
     <string name="best_before">Best Before</string>
     <string name="date_example">07 June, 2021</string>
@@ -45,11 +43,9 @@
     <string name="choose_image">Choose Image</string>
     <string name="txt_data_not_correct">Please Enter Data Correctly!</string>
     <string name="prediction_results">Prediction Results</string>
-    <string name="prediction">Prediction</string>
     <string name="type">Type</string>
     <string name="orange_type">Orange</string>
     <string name="banana_type">Banana</string>
-    <string name="upload_success">Upload successful</string>
     <string name="upload_fail">Failed to upload</string>
     <string name="warning_type_choose">Please choose type first!</string>
     <string name="something_error">There\'s is something error</string>
@@ -74,7 +70,6 @@
     <string name="reminder_prediction_text">Please, check and choose if you want to get fruits prediction</string>
     <string name="get_prediction">Get Prediction</string>
     <string name="next">Next</string>
-    <string name="full_name">Full Name</string>
     <string name="phone">Phone</string>
     <string name="detail_profile">Detail Profile</string>
     <string name="remider_bad_fruit_text">You have bad fruit that can\'t be predicted anymore!</string>
