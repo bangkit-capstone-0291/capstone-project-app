@@ -2,7 +2,6 @@ package com.bangkit.electrateam.qualityumapp.ui.profile.detailprofile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.databinding.ActivityDetailProfileBinding
 import com.google.firebase.auth.FirebaseAuth

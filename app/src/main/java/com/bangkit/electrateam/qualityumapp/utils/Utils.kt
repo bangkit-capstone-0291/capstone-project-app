@@ -1,24 +1,10 @@
-package com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage
+package com.bangkit.electrateam.qualityumapp.utils
 
 import android.content.ContentResolver
 import android.net.Uri
 import android.provider.OpenableColumns
-import android.view.View
-import com.google.android.material.snackbar.Snackbar
 
 object Utils {
-    fun View.snackbar(message: String) {
-        Snackbar.make(
-            this,
-            message,
-            Snackbar.LENGTH_LONG
-        ).also { snackbar ->
-            snackbar.setAction("Ok") {
-                snackbar.dismiss()
-            }
-        }.show()
-    }
-
     fun ContentResolver.getFileName(fileUri: Uri): String {
         var name = ""
         val returnCursor = this.query(fileUri, null, null, null, null)

@@ -21,7 +21,7 @@ import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity.Comp
 import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity.Companion.EXTRA_PREDICT_RESULT
 import com.bangkit.electrateam.qualityumapp.ui.add.fruits.AddFruitsActivity.Companion.EXTRA_QUALITY_RESULT
 import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.UploadRequest
-import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.Utils.getFileName
+import com.bangkit.electrateam.qualityumapp.utils.Utils.getFileName
 import com.bangkit.electrateam.qualityumapp.utils.ImageResizer
 import com.bangkit.electrateam.qualityumapp.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide

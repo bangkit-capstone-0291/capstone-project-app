@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import com.bangkit.electrateam.qualityumapp.MainActivity
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth

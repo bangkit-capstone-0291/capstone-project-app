@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bangkit.electrateam.qualityumapp.databinding.FragmentProfileBinding
 import com.bangkit.electrateam.qualityumapp.ui.login.LoginActivity
@@ -16,7 +15,6 @@ import com.google.firebase.database.*
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var viewModel: ProfileViewModel
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     lateinit var auth: FirebaseAuth
@@ -27,7 +25,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

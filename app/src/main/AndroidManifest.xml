@@ -25,7 +25,6 @@
         <activity android:name=".ui.add.fruits.AddFruitsActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.add.fruits.AddFruitsActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

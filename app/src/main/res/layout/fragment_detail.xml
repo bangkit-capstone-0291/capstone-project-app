@@ -25,7 +25,7 @@
                 android:id="@+id/img_detail_stock"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:src="@drawable/fuji_apple"
+                tools:src="@drawable/broccoli"
                 tools:ignore="ContentDescription" />
         </com.google.android.material.card.MaterialCardView>
 

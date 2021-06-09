@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.bangkit.electrateam.qualityumapp.MainActivity
 import com.bangkit.electrateam.qualityumapp.R
 import com.bangkit.electrateam.qualityumapp.databinding.ActivityLoginBinding
-import com.bangkit.electrateam.qualityumapp.ui.camera.uploadimage.API
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -22,11 +21,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-//        val currentUsers = auth.currentUser
-//        if (currentUsers != null){
-//            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-//            finish()
-//        }
+
         actionButtonLogin()
         binding.shortcutSignUp.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
